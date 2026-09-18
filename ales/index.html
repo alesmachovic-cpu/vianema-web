@@ -48,6 +48,29 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 .menu a{text-decoration:none}
 .menu a.tel{color:var(--brass);font-variant-numeric:tabular-nums}
 @media (max-width:760px){.menu a:not(.tel){display:none}}
+.subnav{display:none}
+@media (max-width:760px){
+  .nav{height:60px}.logo img{height:36px}
+  .subnav{display:flex;gap:18px;overflow-x:auto;font-size:14px;font-weight:600;padding-block:0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .subnav a{white-space:nowrap;text-decoration:none;color:var(--ink)}
+  section{padding-block:48px}.sec-head{margin-bottom:22px}
+  .hero{padding-block:28px 32px}
+  .hero-grid{gap:18px}
+  .hero .mark{order:-1;max-width:96px;margin:0}
+  .hero .lede{margin:18px 0 22px}
+  .hero .actions .btn{width:100%;justify-content:center}
+  .facts{margin-top:32px!important}
+  .band{padding-bottom:110px}
+  .grid3.reels{grid-template-columns:repeat(3,1fr);gap:10px}
+  .grid3.reels .ph.portrait{font-size:11px;padding:8px;text-align:center}
+  .grid3.reels .ph .tag{left:8px;top:8px;font-size:10px;padding:3px 6px}
+  .about .ph{aspect-ratio:1/1;max-width:260px}
+  .val{padding:22px}.val .btn{width:100%;justify-content:center}
+  .form{padding:18px}
+  .teambox{padding:22px}.teambox .btn{width:100%;justify-content:center}
+  footer.site{padding-block:32px 110px}
+}
 
 /* hero */
 .hero{padding-block:56px 40px}
@@ -81,6 +104,14 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 .step .n{font-family:var(--display);font-size:14px;font-weight:700;color:var(--brass);letter-spacing:.1em}
 .step h3{margin:8px 0 8px;font-size:22px}
 .step p{margin:0;font-size:15.5px;color:color-mix(in srgb,var(--band-ink) 72%,transparent)}
+
+/* partners */
+.partners{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink)}
+.partner{padding:22px 22px 24px 0;border-bottom:1px solid var(--line)}
+.partner:nth-child(3n+2),.partner:nth-child(3n){padding-left:22px;border-left:1px solid var(--line)}
+.partner h3{font-size:19px;margin-bottom:8px}
+.partner p{margin:0;font-size:15px;color:var(--muted);max-width:34ch}
+@media (max-width:760px){.partners{grid-template-columns:1fr}.partner{padding:18px 0}.partner:nth-child(3n+2),.partner:nth-child(3n){padding-left:0;border-left:0}}
 
 /* cards */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -209,6 +240,9 @@ footer.site{border-top:1px solid var(--ink);padding-block:40px 120px;color:var(-
       <a class="tel" href="tel:+421915627008">+421 915 627 008</a>
     </nav>
   </div>
+  <nav class="wrap subnav" aria-label="Sekcie">
+    <a href="#ako">Ako pracujem</a><a href="#partneri">S kým pracujem</a><a href="#ponuky">Ponuky</a><a href="#o-mne">O mne</a><a href="#referencie">Referencie</a><a href="#predane">Predané</a><a href="#lokality">Lokality</a><a href="#tim">Tím</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -248,6 +282,26 @@ footer.site{border-top:1px solid var(--ink);padding-block:40px 120px;color:var(-
   <svg class="sky-bg" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ba"/></svg>
 </section>
 
+<section id="partneri">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow brass">S kým pracujem</div><h2>Celý predaj cez jedného človeka</h2></div>
+      <div class="meta" style="max-width:40ch">Odborníkov okolo predaja mám overených rokmi. Koordinujem ich ja — vy riešite jedno telefónne číslo.</div>
+    </div>
+    <div class="partners">
+      <div class="partner"><h3>Profesionálny fotograf a dron</h3><p>Fotky a video, ktoré predávajú. Prvý dojem z inzerátu rozhoduje, či vám kupujúci vôbec zavolá.</p></div>
+      <div class="partner"><h3>Home staging</h3><p>Príprava bytu pred fotením a obhliadkami priamo v našom tíme — vyššia cena a rýchlejší predaj.</p></div>
+      <div class="partner"><h3>Advokátska kancelária</h3><p>Kúpna zmluva, úschova kúpnej ceny a návrh na vklad do katastra. Peniaze aj papiere sú v poriadku skôr, než čokoľvek podpíšete.</p></div>
+      <div class="partner"><h3>Súdny znalec</h3><p>Znalecký posudok, ktorý kupujúci potrebuje k hypotéke — bez týždňov čakania, ktoré obchod zdržia.</p></div>
+      <div class="partner"><h3>Geodet</h3><p>Geometrický plán, zameranie a vytýčenie hraníc pri domoch a pozemkoch. Kataster bez prekvapení.</p></div>
+      <div class="partner"><h3>Hypotekárny špecialista</h3><p>Financovanie pre kupujúceho vybavené vopred, aby obchod nespadol na úvere v poslednej chvíli.</p></div>
+    </div>
+    <div class="example">Mená partnerských firiem sa doplnia po dohode s nimi.</div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
 <section id="ponuky">
   <div class="wrap">
     <div class="sec-head">
@@ -284,7 +338,7 @@ footer.site{border-top:1px solid var(--ink);padding-block:40px 120px;color:var(-
       <div><div class="eyebrow">Z Instagramu</div><h2>Videá</h2></div>
       <a href="https://www.instagram.com/alesmachovic" style="font-weight:600">@alesmachovic →</a>
     </div>
-    <div class="grid3">
+    <div class="grid3 reels">
       <div class="card" style="background:transparent;border-color:color-mix(in srgb,var(--band-ink) 25%,transparent)"><div class="ph portrait" style="background:color-mix(in srgb,var(--band-ink) 10%,transparent);color:var(--band-ink)"><span class="tag" style="background:var(--band-ink);color:var(--band)">Reel</span>Zdedený byt a daň</div></div>
       <div class="card" style="background:transparent;border-color:color-mix(in srgb,var(--band-ink) 25%,transparent)"><div class="ph portrait" style="background:color-mix(in srgb,var(--band-ink) 10%,transparent);color:var(--band-ink)"><span class="tag" style="background:var(--band-ink);color:var(--band)">Reel</span>Test zlého makléra</div></div>
       <div class="card" style="background:transparent;border-color:color-mix(in srgb,var(--band-ink) 25%,transparent)"><div class="ph portrait" style="background:color-mix(in srgb,var(--band-ink) 10%,transparent);color:var(--band-ink)"><span class="tag" style="background:var(--band-ink);color:var(--band)">Reel</span>Návnada na webe makléra</div></div>

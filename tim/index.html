@@ -63,11 +63,37 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 .menu{display:flex;gap:22px;align-items:center;font-size:15px}
 .menu a{color:var(--ink)}
 .menu a.tel{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums}
-@media (max-width:720px){.menu a:not(.tel){display:none}.brand span{display:none}}
+.subnav{display:none}
+@media (max-width:720px){
+  .menu a:not(.tel){display:none}.brand span{display:none}
+  .nav{height:56px}
+  .subnav{display:flex;gap:18px;overflow-x:auto;font-size:14px;padding-block:0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .subnav a{color:var(--ink);white-space:nowrap;font-weight:600}
+  .demo{font-size:13px}.demo select{padding:4px 6px}
+  section{padding-block:40px}.sec-head{margin-bottom:18px}
+  .hero{padding-block:16px 40px}
+  .hero .hero-art{aspect-ratio:16/10}
+  .hero .hero-copy{position:static;background:var(--sky2);padding:20px 18px 22px}
+  .hero h1{font-size:26px;max-width:none}
+  .hero p{margin:10px 0 16px;font-size:15px}
+  .hero .actions{flex-direction:column}
+  .hero .actions .btn{width:100%;justify-content:center}
+  .hero .media-note{left:12px;right:12px;top:12px;text-align:center;font-size:11px}
+  .hero .trust b{font-size:20px}.hero .trust div{padding:14px 16px}
+  .about .ph{aspect-ratio:1/1;width:150px;border-radius:50%}
+  .grid3.reels{grid-template-columns:repeat(3,1fr);gap:10px}
+  .ph.portrait{font-size:11px;padding:8px;text-align:center}
+  .ph.portrait .tag{left:8px;top:8px;font-size:11px;padding:3px 7px}
+  blockquote{padding:18px;font-size:18px}
+  .form{padding:18px}
+  .val{padding:22px}.val .btn{width:100%;justify-content:center}
+}
 
 .hero{padding-block:36px 56px;border-top:0}
-.hero-media{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;max-width:100%;background:var(--sky1);color:#fff}
-.hero-media svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-media{position:relative;border-radius:14px;overflow:hidden;max-width:100%;background:var(--sky1);color:#fff}
+.hero-art{position:relative;aspect-ratio:16/9;max-width:100%}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
 .hero-copy{position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,4vw,44px);background:linear-gradient(to top,rgba(8,14,20,.86),rgba(8,14,20,0))}
 .hero h1{font-size:clamp(30px,5vw,56px);color:#fff;max-width:18ch}
 .hero p{color:rgba(255,255,255,.86);margin:12px 0 20px;max-width:52ch;font-size:clamp(15px,1.6vw,18px)}
@@ -108,6 +134,9 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 .teamline{margin-top:18px;padding:12px 16px;border-radius:12px;background:var(--accent-soft);font-size:15px}
 .teamline a{font-weight:600}
 
+.partner{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.partner h3{font-size:18px;margin-bottom:6px}
+.partner p{margin:0;font-size:15px;color:var(--muted)}
 .team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media (max-width:860px){.team{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.team{grid-template-columns:1fr}}
@@ -226,12 +255,16 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
       <a class="tel" data-f="tel-link" href="#"><span data-f="phone"></span></a>
     </nav>
   </div>
+  <nav class="wrap subnav" aria-label="Sekcie">
+    <a href="#ponuky">Ponuky</a><a href="#o-mne">O mne</a><a href="#partneri">Partneri</a><a href="#tim" id="subTim">Tím</a><a href="#referencie">Referencie</a><a href="#predane">Predané</a><a href="#lokality">Lokality</a>
+  </nav>
 </header>
 
 <main id="top">
 <section class="hero">
   <div class="wrap">
-    <div class="hero-media" role="img" aria-label="Miesto pre hlavnú fotografiu alebo video">
+    <div class="hero-media">
+      <div class="hero-art" role="img" aria-label="Miesto pre hlavnú fotografiu alebo video">
       <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <rect width="1600" height="900" style="fill:var(--sky1)"/>
         <circle cx="1290" cy="200" r="52" style="fill:var(--sun)" opacity=".9"/>
@@ -241,6 +274,7 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
         <path d="M0 800 Q200 788 400 800 T800 800 T1200 800 T1600 800" style="stroke:var(--wave)" stroke-width="3" fill="none" opacity=".45"/>
       </svg>
       <span class="media-note">Sem príde fotka alebo video makléra · web ho upraví sám</span>
+      </div>
       <div class="hero-copy">
         <h1 data-f="headline"></h1>
         <p data-f="sub"></p>
@@ -280,6 +314,24 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
   </div>
 </section>
 
+<section id="partneri">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">S kým pracujem</div><h2>Celý predaj cez jedného človeka</h2></div>
+      <div class="meta" style="max-width:40ch">Odborníkov okolo predaja máme vo Vianema overených rokmi. Koordinujem ich ja — vy riešite jedno telefónne číslo.</div>
+    </div>
+    <div class="grid3">
+      <div class="partner"><h3>Profesionálny fotograf a dron</h3><p>Fotky a video, ktoré predávajú. Prvý dojem z inzerátu rozhoduje, či vám kupujúci vôbec zavolá.</p></div>
+      <div class="partner"><h3>Home staging</h3><p>Príprava bytu pred fotením a obhliadkami priamo v našom tíme — vyššia cena a rýchlejší predaj.</p></div>
+      <div class="partner"><h3>Advokátska kancelária</h3><p>Kúpna zmluva, úschova kúpnej ceny a návrh na vklad do katastra. Peniaze aj papiere v poriadku skôr, než čokoľvek podpíšete.</p></div>
+      <div class="partner"><h3>Súdny znalec</h3><p>Znalecký posudok, ktorý kupujúci potrebuje k hypotéke — bez týždňov čakania, ktoré obchod zdržia.</p></div>
+      <div class="partner"><h3>Geodet</h3><p>Geometrický plán, zameranie a vytýčenie hraníc pri domoch a pozemkoch. Kataster bez prekvapení.</p></div>
+      <div class="partner"><h3>Hypotekárny špecialista</h3><p>Financovanie pre kupujúceho vybavené vopred, aby obchod nespadol na úvere v poslednej chvíli.</p></div>
+    </div>
+    <div class="example">Mená partnerských firiem sa doplnia po dohode s nimi.</div>
+  </div>
+</section>
+
 <section id="tim">
   <div class="wrap">
     <div class="sec-head">
@@ -297,7 +349,7 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
       <div><div class="eyebrow">Z Instagramu</div><h2>Videá</h2></div>
       <a data-f="ig-link" href="#">Sledovať na Instagrame →</a>
     </div>
-    <div class="grid3">
+    <div class="grid3 reels">
       <div class="card"><div class="ph portrait"><span class="tag">Reel</span>Najnovšie video</div></div>
       <div class="card"><div class="ph portrait"><span class="tag">Reel</span>Predchádzajúce</div></div>
       <div class="card"><div class="ph portrait"><span class="tag">Reel</span>Predchádzajúce</div></div>
@@ -491,7 +543,7 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
     $('sold').innerHTML=b.sold.map(function(s){return '<div class="sold-row"><div>'+s[0]+'<div class="loc">'+s[1]+'</div></div><div class="loc">2026</div><span class="days">predané za '+s[2]+'</span></div>'}).join('');
     var ph=$('portrait'); if(b.photo){ph.innerHTML='<img src="'+b.photo+'" alt="'+b.name+'" style="width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block">'}else{ph.textContent='Portrét'}
     var inTeam = b.team!==false;
-    $('tim').hidden=!inTeam; $('navTim').hidden=!inTeam; $('teamline').hidden=!inTeam;
+    $('tim').hidden=!inTeam; $('navTim').hidden=!inTeam; $('subTim').hidden=!inTeam; $('teamline').hidden=!inTeam;
     $('branch').innerHTML = b.branch || 'Vianema s.r.o. · Pobočka Bratislava · Jašíkova 2, BC Kerametal · manažér pobočky <a href="'+ALES.url+'">Aleš Machovič</a>';
     var cards=['<div class="member lead"><div class="top"><div class="avatar">AM</div><div><h3>'+ALES.name+'</h3><div class="role">'+ALES.role+'</div></div></div><div class="areas-s">'+ALES.areas+'</div><div><span class="badge">Manažér pobočky</span></div><div class="go"><a class="btn btn-primary" href="'+ALES.url+'">Web manažéra →</a><a class="btn btn-ghost" href="tel:'+ALES.tel+'">Zavolať</a></div></div>'];
     ORDER.filter(function(k){return k!==id && B[k].team!==false}).forEach(function(k){var m=B[k];
