@@ -1,0 +1,437 @@
+<!doctype html><html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aleš Machovič Reality</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F3F2EE; --surface:#FFFFFF; --ink:#111111; --muted:#66655F; --line:#D8D6CF; --band:#111111; --band-ink:#F3F2EE;
+  --brass:#A87B1F; --brass-soft:#F1E7CF; --ok:#2E6B3F; --ok-soft:#E1EFE4;
+  --display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --body:'IBM Plex Sans','Segoe UI',Helvetica,Arial,sans-serif;
+  --logo-filter:none;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121212; --surface:#1B1B1A; --ink:#F1F0EC; --muted:#A3A29B; --line:#2E2E2B; --band:#F1F0EC; --band-ink:#111111;
+    --brass:#D6B25E; --brass-soft:#2E2816; --ok:#8FCB9F; --ok-soft:#1E3327; --logo-filter:invert(1);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121212; --surface:#1B1B1A; --ink:#F1F0EC; --muted:#A3A29B; --line:#2E2E2B; --band:#F1F0EC; --band-ink:#111111;
+  --brass:#D6B25E; --brass-soft:#2E2816; --ok:#8FCB9F; --ok-soft:#1E3327; --logo-filter:invert(1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4vw,44px);font-weight:700}
+h3{font-size:20px;font-weight:700}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.eyebrow.brass{color:var(--brass)}
+section{padding-block:72px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.example{font-size:12px;color:var(--muted);margin-top:14px}
+.rule{height:1px;background:var(--line)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{height:42px;width:auto;filter:var(--logo-filter)}
+.brandgroup{display:flex;align-items:center;gap:16px}
+.brandgroup .sep{width:1px;height:28px;background:var(--line)}
+.vianema-mark{display:block;height:15px;width:86px;color:var(--ink);fill:currentColor}
+.vianema-link{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--muted);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:480px){.brandgroup .sep,.vianema-link{display:none}}
+.menu{display:flex;gap:24px;align-items:center;font-size:15px;font-weight:500}
+.menu a{text-decoration:none}
+.menu a.tel{color:var(--brass);font-variant-numeric:tabular-nums}
+@media (max-width:760px){.menu a:not(.tel){display:none}}
+
+/* hero */
+.hero{padding-block:56px 40px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(46px,8vw,104px);font-weight:800;line-height:.95}
+.hero h1 em{font-style:normal;color:var(--brass)}
+.hero .lede{font-size:clamp(17px,1.7vw,21px);color:var(--muted);max-width:52ch;margin:24px 0 28px}
+.mark{width:100%;max-width:360px;margin:0 auto;color:var(--ink);display:block}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:16px;border:1.5px solid var(--ink);cursor:pointer;font-family:var(--body);line-height:1.2;text-decoration:none;background:transparent;color:var(--ink)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn-solid{background:var(--ink);color:var(--paper)}
+.btn-solid:hover{background:var(--brass);border-color:var(--brass);color:#111}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.facts div{padding:22px 18px 22px 0;border-left:1px solid var(--line);padding-left:18px}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts b{display:block;font-family:var(--display);font-size:38px;font-weight:800;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.facts small{color:var(--muted);font-size:14px}
+@media (max-width:760px){.facts{grid-template-columns:1fr 1fr}.facts div{padding-left:18px}.facts div:nth-child(odd){border-left:0;padding-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* band (dark) */
+.band{background:var(--band);color:var(--band-ink)}
+.band .eyebrow{color:color-mix(in srgb,var(--band-ink) 60%,transparent)}
+.band .muted{color:color-mix(in srgb,var(--band-ink) 70%,transparent)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{border-top:2px solid var(--brass);padding-top:16px}
+.step .n{font-family:var(--display);font-size:14px;font-weight:700;color:var(--brass);letter-spacing:.1em}
+.step h3{margin:8px 0 8px;font-size:22px}
+.step p{margin:0;font-size:15.5px;color:color-mix(in srgb,var(--band-ink) 72%,transparent)}
+
+/* cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:760px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.ph{background:color-mix(in srgb,var(--ink) 6%,var(--surface));aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;color:var(--muted);font-size:13px;position:relative}
+.ph.portrait{aspect-ratio:9/16}
+.ph .tag{position:absolute;left:12px;top:12px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 9px}
+.card-body{padding:16px 18px 18px}
+.price{font-family:var(--display);font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;margin-top:4px}
+.meta{color:var(--muted);font-size:14px}
+
+/* about */
+.about{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:start}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.about .ph{aspect-ratio:4/5;border-radius:4px}
+.about p{max-width:62ch;margin:0 0 14px;font-size:17px}
+.about .big{font-family:var(--display);font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.25;margin-bottom:18px}
+
+/* reviews */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:760px){.quotes{grid-template-columns:1fr}}
+blockquote{margin:0;padding:24px;border:1px solid var(--line);background:var(--surface);font-size:17px;line-height:1.5}
+blockquote footer{font-size:14px;color:var(--muted);margin-top:14px}
+.stars{color:var(--brass);letter-spacing:2px;font-size:13px}
+
+/* sold */
+.sold{border-top:1px solid var(--ink)}
+.sold-row{display:grid;grid-template-columns:1fr 64px 190px;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.sold-row .days{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ok);background:var(--ok-soft);padding:4px 12px;border-radius:999px;font-size:14px;white-space:nowrap;justify-self:end;text-align:center;min-width:170px}
+.sold-row .loc{color:var(--muted);font-size:14px}
+.sold-row>.loc:nth-child(2){text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.sold-row{grid-template-columns:1fr 150px}.sold-row>.loc:nth-child(2){display:none}.sold-row .days{min-width:0}}
+
+/* valuation */
+.val{border:1.5px solid var(--ink);padding:32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-radius:4px}
+.val h2{margin:0 0 6px}
+.val p{margin:0;color:var(--muted);max-width:56ch}
+.form{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:26px;max-width:540px}
+.form label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.form .f{margin-bottom:16px}
+.form input[type=text],.form input[type=tel],.form input[type=number],.form select{width:100%;padding:12px 14px;font-size:16px;font-family:var(--body);border:1.5px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)}
+.steps-bar{display:flex;gap:8px;margin-bottom:22px}
+.steps-bar i{height:3px;flex:1;background:var(--line)}
+.steps-bar i.on{background:var(--ink)}
+.err{color:#B3261E;font-size:14px;margin-top:4px}
+.opt-toggle{background:none;border:0;color:var(--brass);font:inherit;font-weight:600;padding:0;cursor:pointer;margin-bottom:16px}
+.optional{border-top:1px dashed var(--line);padding-top:14px;margin-bottom:8px}
+.optional .hint{font-size:13px;color:var(--muted);margin-bottom:12px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.check input{margin-top:5px}
+.done{text-align:center;padding:10px 0}
+.done b{display:block;font-family:var(--display);font-size:24px;font-weight:700;margin-top:10px}
+.wide{width:100%;justify-content:center}
+
+/* areas */
+.areas{display:flex;gap:10px;flex-wrap:wrap}
+.areas a{padding:10px 16px;border:1px solid var(--line);color:var(--ink);font-weight:500;font-size:15px;text-decoration:none;background:var(--surface)}
+.areas a:hover{border-color:var(--ink)}
+
+/* team link */
+.teambox{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:28px;border:1px solid var(--line);background:var(--surface);border-radius:4px}
+
+/* footer */
+footer.site{border-top:1px solid var(--ink);padding-block:40px 120px;color:var(--muted);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.foot .logo img{height:56px}
+.foot a{color:var(--ink);text-decoration:none}
+.sky{display:block;width:min(460px,80%);height:auto;aspect-ratio:1200/220;color:var(--brass);fill:currentColor;opacity:.22;margin:30px auto 0}
+.sky-head{display:block;width:min(460px,80%);height:auto;aspect-ratio:1200/220;color:var(--brass);fill:currentColor;opacity:.22;margin:0 auto 26px}
+.band{position:relative;overflow:hidden;padding-bottom:150px}
+.band .wrap{position:relative;z-index:1}
+.band .sky-bg{position:absolute;left:50%;transform:translateX(-50%);bottom:-2px;width:min(620px,86%);height:auto;aspect-ratio:1200/220;color:var(--brass);fill:currentColor;opacity:.18;pointer-events:none}
+
+/* persistent bar */
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);z-index:30}
+.bar .btn{flex:1;justify-content:center}
+.btn-wa{background:#1F8F4E;color:#fff;border-color:#1F8F4E}
+.btn-wa:hover{background:#176E3C;border-color:#176E3C;color:#fff}
+@media (min-width:761px){
+  .bar{left:auto;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--line);border-radius:999px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+  .bar .btn{flex:0 0 auto}
+}
+@media (max-width:760px){body{padding-bottom:84px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="am-mark" viewBox="0 0 62.07 60.96">
+    <circle cx="19.68" cy="58.07" r="1.69"/><circle cx="14.96" cy="55.59" r="1.69"/><circle cx="10.77" cy="52.2" r="1.69"/>
+    <path d="M29.56.03C13.78.77.92,13.5.05,29.28c-.38,6.88,1.49,13.3,4.95,18.61.51.78,1.55,1,2.33.5h0c.81-.51,1.04-1.58.51-2.39-3.04-4.69-4.7-10.35-4.39-16.4C4.15,15.82,15.15,4.53,28.91,3.49c16.18-1.22,29.74,11.61,29.74,27.54,0,11.37-6.91,21.16-16.75,25.39-.64.28-1.12.88-1.12,1.59-.01,1.24,1.25,2.07,2.39,1.59,11.1-4.73,18.9-15.75,18.9-28.56C62.07,13.43,47.34-.79,29.56.03Z"/>
+    <path d="M31.02,60.96c-.97,0-1.75-.79-1.75-1.75v-15.44c-4.16-.87-7.15-4.52-7.15-8.79,0-4.96,4.03-8.99,8.99-8.99s8.99,4.03,8.99,8.99c0,4.27-2.99,7.93-7.15,8.79v9.34h2.42c.97,0,1.75.79,1.75,1.75v4.34c0,.97-.79,1.75-1.75,1.75h-4.34ZM31.1,29.67c-2.93,0-5.32,2.39-5.32,5.32s2.39,5.32,5.32,5.32,5.32-2.39,5.32-5.32-2.39-5.32-5.32-5.32Z"/>
+    <path d="M49.84,32.05c-.45,0-.88-.16-1.22-.46l-17.32-15.4-17.72,15.41c-.33.29-.76.45-1.2.45-.53,0-1.04-.23-1.39-.63-.32-.37-.48-.84-.45-1.33s.26-.94.63-1.26L30.1,12.36c.33-.29.76-.45,1.2-.45s.88.16,1.22.46l10.85,9.65v-3.23h3.67v6.5l4,3.56c.37.33.58.77.61,1.26.03.49-.13.96-.46,1.33-.35.39-.85.62-1.37.62h0Z"/>
+  </symbol>
+  <symbol id="vianema" viewBox="0 0 800 140">
+    <rect x="10" y="50" width="70" height="10" fill="#2BB3B8"/><rect x="10" y="80" width="70" height="10" fill="#2BB3B8"/>
+    <text x="400" y="95" font-family="Helvetica, Arial, sans-serif" font-size="80" font-weight="300" letter-spacing="14" text-anchor="middle" fill="currentColor">VIANEMA</text>
+    <rect x="720" y="50" width="70" height="10" fill="#2BB3B8"/><rect x="720" y="80" width="70" height="10" fill="#2BB3B8"/>
+  </symbol>
+  <symbol id="ba" viewBox="0 0 1200 220">
+    <rect x="95" y="186" width="50" height="14"/><polygon points="111,186 129,186 127,72 113,72"/><rect x="114" y="62" width="12" height="10"/><circle cx="120" cy="57" r="5"/>
+    <rect x="226" y="40" width="8" height="160"/><ellipse cx="230" cy="96" rx="26" ry="8"/><ellipse cx="230" cy="72" rx="14" ry="5"/>
+    <polygon points="296,200 332,152 522,152 562,200"/><rect x="360" y="112" width="130" height="46"/>
+    <rect x="350" y="92" width="18" height="70"/><polygon points="350,92 359,78 368,92"/><rect x="392" y="98" width="12" height="64"/><polygon points="392,98 398,86 404,98"/>
+    <rect x="446" y="98" width="12" height="64"/><polygon points="446,98 452,86 458,98"/><rect x="482" y="92" width="18" height="70"/><polygon points="482,92 491,78 500,92"/>
+    <rect x="600" y="120" width="40" height="80"/><rect x="612" y="60" width="16" height="62"/><polygon points="607,60 620,8 633,60"/><circle cx="620" cy="7" r="4"/>
+    <rect x="680" y="100" width="22" height="100"/><ellipse cx="691" cy="98" rx="13" ry="10"/><polygon points="687,90 691,68 695,90"/><circle cx="691" cy="66" r="3"/>
+    <path d="M740 172 L1060 166" stroke="currentColor" stroke-width="5" fill="none"/><path d="M877 62 L800 170 M877 62 L1000 168" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    <path d="M905 200 L866 64 M935 200 L888 64" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="860" y="58" width="34" height="8"/><ellipse cx="877" cy="50" rx="46" ry="12"/><rect x="865" y="30" width="24" height="18" rx="5"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <div class="brandgroup">
+      <a class="logo" href="#top" aria-label="Aleš Machovič — domov"><img src="logo.svg" alt="Aleš Machovič"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="vianema-link" href="https://www.vianemareal.eu/pobocka/1-Pobo%C4%8Dka%20Bratislava" aria-label="Vianema, pobočka Bratislava"><svg class="vianema-mark" viewBox="0 0 800 140" aria-hidden="true"><use href="#vianema"/></svg><span>pobočka Bratislava</span></a>
+    </div>
+    <nav class="menu" aria-label="Hlavné menu">
+      <a href="#ponuky">Ponuky</a>
+      <a href="#o-mne">O mne</a>
+      <a href="#predane">Predané</a>
+      <a href="#tim">Tím</a>
+      <a href="#lokality">Lokality</a>
+      <a class="tel" href="tel:+421915627008">+421 915 627 008</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow brass">Realitný maklér · manažér pobočky Vianema Bratislava</div>
+        <h1 style="margin-top:14px">Robím to pre peniaze.<br><em>Pre tie vaše.</em></h1>
+        <p class="lede">Zarábam len vtedy, keď vy predáte dobre. 13 rokov, 350+ predaných nehnuteľností v Bratislave — a rozbor ceny od človeka, nie od automatu, do 24 hodín.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#ocenenie" data-open-form>Zistiť cenu nehnuteľnosti</a>
+          <a class="btn" href="#ponuky">Aktuálne ponuky</a>
+        </div>
+      </div>
+      <svg class="mark" viewBox="0 0 62.07 60.96" aria-hidden="true" style="fill:currentColor"><use href="#am-mark"/></svg>
+    </div>
+
+    <div class="facts" style="margin-top:56px" aria-label="Fakty">
+      <div><b>350+</b><small>predaných nehnuteľností</small></div>
+      <div><b>13</b><small>rokov v realitách</small></div>
+      <div><b>4,9</b><small>hodnotenie na Google</small></div>
+      <div><b>24 h</b><small>rozbor ceny od makléra</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="ako">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Ako pracujem</div><h2>Tri veci, ktoré dostanete vždy</h2></div></div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Rozbor ceny do 24 hodín</h3><p>Nie číslo z kalkulačky. Porovnateľné predaje z vašej lokality, realizované ceny, a na rovinu, či sa oplatí predávať teraz.</p></div>
+      <div class="step"><div class="n">02</div><h3>Plán predaja na papieri</h3><p>Čo sa spraví, kedy a za koľko — skôr, než niečo podpíšete. Aby ste vedeli, čo si kupujete.</p></div>
+      <div class="step"><div class="n">03</div><h3>Prehľad počas celého predaja</h3><p>Koľko ľudí sa ozvalo, koľko prišlo, čo povedali. Žiadne „ozvem sa, keď bude niečo nové".</p></div>
+    </div>
+  </div>
+  <svg class="sky-bg" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ba"/></svg>
+</section>
+
+<section id="ponuky">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Aktuálne</div><h2>Ponuky</h2></div>
+      <a href="https://www.vianemareal.eu/makler/36--ales-machovic" style="font-weight:600">Všetky ponuky na vianema.eu →</a>
+    </div>
+    <div class="grid3">
+      <a class="card" href="https://www.vianemareal.eu/nehnutelnost/2225-na-predaj-zrekonstruovany-1-izbovy-byt-karlova-ves" style="text-decoration:none;color:inherit"><div class="ph"><span class="tag">Byt</span><img class="ph" src="p1.jpg" alt=""></div><div class="card-body"><h3>1-izbový byt, Karlova Ves</h3><div class="price">179 990 €</div><div class="meta">34 m² · po rekonštrukcii · loggia, pivnica</div></div></a>
+      <a class="card" href="https://www.vianemareal.eu/nehnutelnost/2224-zrekonstruovany-rodinny-dom-ivanka-pri-dunaji" style="text-decoration:none;color:inherit"><div class="ph"><span class="tag">Dom</span><img class="ph" src="p2.jpg" alt=""></div><div class="card-body"><h3>Rodinný dom, Ivanka pri Dunaji</h3><div class="price">559 999 €</div><div class="meta">157 m² · zrekonštruovaný</div></div></a>
+      <a class="card" href="https://www.vianemareal.eu/makler/36--ales-machovic" style="text-decoration:none;color:inherit"><div class="ph"><span class="tag">Dom</span><img class="ph" src="p3.jpg" alt=""></div><div class="card-body"><h3>7-izbový dom, Miloslavov</h3><div class="price">414 999 €</div><div class="meta">pozemok 1 685 m² · pôvodná časť obce</div></div></a>
+    </div>
+    <div class="example">Moje aktuálne ponuky z vianemareal.eu (ponukové ceny, stav k 18. 9. 2026). Na živom webe sa aktualizujú automaticky.</div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section id="o-mne">
+  <div class="wrap about">
+    <div class="ph"><img src="portret.jpg" alt="Aleš Machovič" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block"></div>
+    <div>
+      <div class="eyebrow brass">O mne</div>
+      <h2 style="margin:10px 0 18px">Aleš Machovič</h2>
+      <p class="big">Poviem vám aj to, čo sa počúva ťažšie — či je vaša cena reálna, alebo či sa oplatí počkať.</p>
+      <p>Nehnuteľnosti predávam 13 rokov, vediem pobočku Vianema v Bratislave. Sústredím sa na Ružinov, Petržalku, Raču, Dúbravku a okolie — poznám nielen ceny, ale aj to, kto a prečo tu kupuje.</p>
+      <p>Predaj vediem tak, aby ste mali celý čas prehľad: čo sa robí, kedy a za koľko. Moja odmena je provízia z predaja — preto sa mi oplatí to isté, čo vám: predať dobre a bez zbytočných mesiacov.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="videa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Z Instagramu</div><h2>Videá</h2></div>
+      <a href="https://www.instagram.com/alesmachovic" style="font-weight:600">@alesmachovic →</a>
+    </div>
+    <div class="grid3">
+      <div class="card" style="background:transparent;border-color:color-mix(in srgb,var(--band-ink) 25%,transparent)"><div class="ph portrait" style="background:color-mix(in srgb,var(--band-ink) 10%,transparent);color:var(--band-ink)"><span class="tag" style="background:var(--band-ink);color:var(--band)">Reel</span>Zdedený byt a daň</div></div>
+      <div class="card" style="background:transparent;border-color:color-mix(in srgb,var(--band-ink) 25%,transparent)"><div class="ph portrait" style="background:color-mix(in srgb,var(--band-ink) 10%,transparent);color:var(--band-ink)"><span class="tag" style="background:var(--band-ink);color:var(--band)">Reel</span>Test zlého makléra</div></div>
+      <div class="card" style="background:transparent;border-color:color-mix(in srgb,var(--band-ink) 25%,transparent)"><div class="ph portrait" style="background:color-mix(in srgb,var(--band-ink) 10%,transparent);color:var(--band-ink)"><span class="tag" style="background:var(--band-ink);color:var(--band)">Reel</span>Návnada na webe makléra</div></div>
+    </div>
+    <div class="example muted" style="color:color-mix(in srgb,var(--band-ink) 60%,transparent)">Vždy najnovšie 3 videá — načítavajú sa automaticky z Instagramu.</div>
+  </div>
+</section>
+
+<section id="referencie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Referencie</div><h2>Čo hovoria klienti</h2></div>
+      <a class="btn" href="#">★ Ohodnoť ma na Google</a>
+    </div>
+    <div class="quotes">
+      <blockquote>„Byt sa predal za dva týždne a za cenu, ktorú Aleš odhadol na začiatku. Nič sme nemuseli riešiť sami."<footer><span class="stars">★★★★★</span><br>Jana K. · Google recenzia</footer></blockquote>
+      <blockquote>„Poradil nám aj v komplikovanej dedičskej situácii, kde sme netušili, ako začať."<footer><span class="stars">★★★★★</span><br>Peter M. · Google recenzia</footer></blockquote>
+      <blockquote>„Povedal nám na rovinu, že naša predstava o cene je vysoká. Mal pravdu a ušetril nám mesiace."<footer><span class="stars">★★★★★</span><br>Martina a Tomáš · Google recenzia</footer></blockquote>
+    </div>
+    <div class="example">Ukážkové texty — nahradia sa recenziami z Google, kde ma klient spomína menom. <a href="#">Všetky recenzie na Google →</a></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section id="predane">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow brass">Výsledky</div><h2>Vybrané predané nehnuteľnosti</h2></div></div>
+    <div class="sold">
+      <div class="sold-row"><div><b>2-izbový byt</b><div class="loc">Ružinov, Jégeho alej</div></div><div class="loc">2026</div><span class="days">predané za 14 dní</span></div>
+      <div class="sold-row"><div><b>Rodinný dom</b><div class="loc">Rača, Plickova</div></div><div class="loc">2026</div><span class="days">predané za 21 dní</span></div>
+      <div class="sold-row"><div><b>3-izbový byt</b><div class="loc">Petržalka, Lúky</div></div><div class="loc">2026</div><span class="days">predané za 9 dní</span></div>
+      <div class="sold-row"><div><b>Investičný byt</b><div class="loc">Nové Mesto</div></div><div class="loc">2025</div><span class="days">predané za 18 dní</span></div>
+    </div>
+    <div class="example">Ukážkový výber zo 350+ predaných. Pri nových ponukách sa počet dní počíta automaticky zo zmeny stavu na vianema.eu.</div>
+  </div>
+</section>
+
+<section id="ocenenie">
+  <div class="wrap">
+    <div class="val">
+      <div>
+        <div class="eyebrow brass">Predávate?</div>
+        <h2>Koľko stojí vaša nehnuteľnosť</h2>
+        <p>Rozbor od makléra do 24 hodín — nie automatické číslo. Dve minúty, nič nepodpisujete. Dopyt príde len mne.</p>
+      </div>
+      <button class="btn btn-solid" id="openForm" type="button">Zistiť cenu</button>
+    </div>
+    <div class="form" id="form" hidden>
+      <div class="steps-bar"><i id="s1" class="on"></i><i id="s2"></i></div>
+      <div id="step1">
+        <div class="f"><label for="typ">Typ nehnuteľnosti</label><select id="typ"><option value="">Vyberte</option><option>Byt</option><option>Dom</option><option>Pozemok</option></select><div class="err" id="e-typ" hidden>Vyberte typ nehnuteľnosti.</div></div>
+        <div class="f"><label for="adresa">Adresa alebo lokalita</label><input id="adresa" type="text" placeholder="napr. Ružinov, Jégeho alej"><div class="err" id="e-adresa" hidden>Zadajte aspoň lokalitu.</div></div>
+        <div class="f"><label for="m2">Výmera (m²)</label><input id="m2" type="number" placeholder="napr. 65" min="1"><div class="err" id="e-m2" hidden>Zadajte výmeru v m².</div></div>
+        <button class="opt-toggle" id="toggleOpt" type="button">+ pridať detaily (voliteľné)</button>
+        <div class="optional" id="optional" hidden>
+          <div class="hint">Nepovinné — pomôže presnejšiemu rozboru. Zvyšok doladíme v telefonáte.</div>
+          <div class="f"><label for="stav">Stav nehnuteľnosti</label><select id="stav"><option value="">Nevyplnené</option><option>Pôvodný stav</option><option>Čiastočná rekonštrukcia</option><option>Po kompletnej rekonštrukcii</option><option>Novostavba</option></select></div>
+          <div class="f"><label for="izby">Počet izieb</label><select id="izby"><option value="">Nevyplnené</option><option>1</option><option>2</option><option>3</option><option>4 a viac</option></select></div>
+        </div>
+        <button class="btn btn-solid wide" id="next" type="button">Pokračovať</button>
+      </div>
+      <div id="step2" hidden>
+        <div class="f"><label for="meno">Meno</label><input id="meno" type="text" placeholder="Meno a priezvisko"><div class="err" id="e-meno" hidden>Zadajte meno.</div></div>
+        <div class="f"><label for="tel">Telefón</label><input id="tel" type="tel" placeholder="+421 9xx xxx xxx"><div class="err" id="e-tel" hidden>Zadajte telefónne číslo.</div></div>
+        <div class="f"><label for="kedy">Kedy plánujete predávať? (voliteľné)</label><select id="kedy"><option value="">Neviem ešte</option><option>Do 3 mesiacov</option><option>Neskôr</option><option>Len zisťujem cenu</option></select></div>
+        <div class="f check"><input id="gdpr" type="checkbox"><label for="gdpr" style="font-weight:400;margin:0">Súhlasím so spracovaním údajov na účel kontaktovania.</label></div>
+        <div class="err" id="e-gdpr" hidden>Bez súhlasu vás nemôžem kontaktovať.</div>
+        <div class="actions" style="margin-top:14px">
+          <button class="btn" id="back" type="button">Späť</button>
+          <button class="btn btn-solid" id="send" type="button" style="flex:1;justify-content:center">Odoslať dopyt</button>
+        </div>
+      </div>
+      <div class="done" id="done" hidden>
+        <span class="stars" style="font-size:26px">✓</span>
+        <b>Ďakujem. Ozvem sa do 24 hodín.</b>
+        <div class="meta" style="margin-top:6px">Dopyt ide priamo na machovic@vianema.eu, nikam inam.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section id="lokality">
+  <div class="wrap">
+    <svg class="sky-head" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ba"/></svg>
+    <div class="sec-head"><div><div class="eyebrow">Kde predávam</div><h2>Lokality</h2></div></div>
+    <div class="areas">
+      <a href="#">Ružinov</a><a href="#">Petržalka</a><a href="#">Rača</a><a href="#">Dúbravka</a><a href="#">Karlova Ves</a><a href="#">Nové Mesto</a><a href="#">Ivanka pri Dunaji</a><a href="#">Miloslavov</a><a href="#">Dunajská Lužná</a>
+    </div>
+    <div class="example">Každá lokalita bude mať vlastnú stránku s cenami a nájmami — vstupný bod z Googlu.</div>
+  </div>
+</section>
+
+<section id="tim" style="padding-top:0">
+  <div class="wrap">
+    <div class="teambox">
+      <div>
+        <div class="eyebrow brass">Vianema · pobočka Bratislava</div>
+        <h3 style="margin-top:6px;font-size:24px">Vediem tím piatich maklérov</h3>
+        <div class="meta">Silvia, Nina, Nikoleta, Slavomír a Rastislav — každý s vlastným webom a vlastnou lokalitou.</div>
+      </div>
+      <a class="btn" href="../tim/">Spoznať tím →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site" id="kontakt">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top"><img src="logo.svg" alt="Aleš Machovič"></a>
+        <div style="margin-top:12px">Manažér pobočky Vianema Bratislava · realitný maklér<br>Jašíkova 2, BC Kerametal, Bratislava</div>
+        <a href="https://www.vianemareal.eu" style="display:inline-flex;align-items:center;gap:10px;margin-top:16px;color:var(--muted)"><svg class="vianema-mark" viewBox="0 0 800 140" aria-hidden="true" style="height:18px;width:103px"><use href="#vianema"/></svg><span style="font-size:13px">vianemareal.eu</span></a>
+      </div>
+      <div style="display:grid;gap:6px;font-size:15px">
+        <a href="tel:+421915627008">+421 915 627 008</a>
+        <a href="mailto:machovic@vianema.eu">machovic@vianema.eu</a>
+        <a href="https://www.instagram.com/alesmachovic">Instagram @alesmachovic</a>
+        <a href="https://www.youtube.com/@alesmachovic">YouTube @alesmachovic</a>
+      </div>
+    </div>
+    <svg class="sky" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ba"/></svg>
+  </div>
+</footer>
+
+<div class="bar" aria-label="Rýchly kontakt">
+  <a class="btn btn-wa" href="https://wa.me/421915627008">WhatsApp</a>
+  <a class="btn btn-solid" href="#ocenenie" data-open-form>Zistiť cenu</a>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var form=$('form'),s1=$('step1'),s2=$('step2'),done=$('done'),opt=$('optional');
+  $('openForm').addEventListener('click',function(){form.hidden=!form.hidden;if(!form.hidden){form.scrollIntoView({behavior:'smooth',block:'start'})}});
+  document.querySelectorAll('[data-open-form]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();form.hidden=false;form.scrollIntoView({behavior:'smooth',block:'start'})})});
+  $('toggleOpt').addEventListener('click',function(){opt.hidden=!opt.hidden;this.textContent=opt.hidden?'+ pridať detaily (voliteľné)':'− skryť detaily'});
+  function show(id,bad){$(id).hidden=!bad;return bad}
+  $('next').addEventListener('click',function(){var bad=false;bad=show('e-typ',!$('typ').value)||bad;bad=show('e-adresa',!$('adresa').value.trim())||bad;bad=show('e-m2',!$('m2').value)||bad;if(bad)return;s1.hidden=true;s2.hidden=false;$('s2').classList.add('on')});
+  $('back').addEventListener('click',function(){s2.hidden=true;s1.hidden=false;$('s2').classList.remove('on')});
+  $('send').addEventListener('click',function(){var bad=false;bad=show('e-meno',!$('meno').value.trim())||bad;bad=show('e-tel',!$('tel').value.trim())||bad;bad=show('e-gdpr',!$('gdpr').checked)||bad;if(bad)return;s2.hidden=true;done.hidden=false});
+  ['typ','adresa','m2','meno','tel'].forEach(function(id){$(id).addEventListener('input',function(){$('e-'+id).hidden=true})});
+  $('gdpr').addEventListener('change',function(){$('e-gdpr').hidden=true});
+})();
+</script>
+
+</body></html>

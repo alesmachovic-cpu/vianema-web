@@ -1,0 +1,527 @@
+<!doctype html><html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Web makléra Vianema</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --p-acc-l:#4F6F52; --p-ink-l:#34503A; --p-soft-l:#E2EBE1;
+  --p-acc-d:#9CC49E; --p-ink-d:#CFE6D0; --p-soft-d:#22302A;
+  --sky1:#16261C; --sky2:#0F1B14; --skyline:#2E4A36; --wave:#3B5E44; --sun:#F1E1B0;
+
+  --ground:#F2F4F1; --surface:#FFFFFF; --band:#E7E9E3;
+  --ink:#14202A; --muted:#5B6770; --line:#D6DBD7;
+  --accent:var(--p-acc-l); --accent-ink:var(--p-ink-l); --accent-soft:var(--p-soft-l);
+  --ok:#2E6B3F; --ok-soft:#E1EFE4;
+  --radius:10px;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+:root[data-palette="dunaj"]{--p-acc-l:#1B5E7B;--p-ink-l:#0F3D52;--p-soft-l:#DDEAF1;--p-acc-d:#6FB3D2;--p-ink-d:#BFE0EE;--p-soft-d:#1D3543;--sky1:#0E2A3A;--sky2:#0A1F2C;--skyline:#1C4C66;--wave:#1F5A76;--sun:#F0D9A6}
+:root[data-palette="hrad"]{--p-acc-l:#9B3B2E;--p-ink-l:#6F271E;--p-soft-l:#F3E1DC;--p-acc-d:#E08A7A;--p-ink-d:#F5C9BF;--p-soft-d:#3A2220;--sky1:#2A1714;--sky2:#1C100E;--skyline:#5A2E27;--wave:#6E3A31;--sun:#F3D9A0}
+:root[data-palette="park"]{--p-acc-l:#4F6F52;--p-ink-l:#34503A;--p-soft-l:#E2EBE1;--p-acc-d:#9CC49E;--p-ink-d:#CFE6D0;--p-soft-d:#22302A;--sky1:#16261C;--sky2:#0F1B14;--skyline:#2E4A36;--wave:#3B5E44;--sun:#F1E1B0}
+:root[data-palette="piesky"]{--p-acc-l:#B0681A;--p-ink-l:#7A4710;--p-soft-l:#F6E9D6;--p-acc-d:#E6A957;--p-ink-d:#F5D8AE;--p-soft-d:#3A2C1A;--sky1:#2B1E10;--sky2:#1D140A;--skyline:#5E4322;--wave:#75552C;--sun:#FFE7B0}
+:root[data-palette="kamzik"]{--p-acc-l:#2F5D3A;--p-ink-l:#1F3F27;--p-soft-l:#DFEBE1;--p-acc-d:#8CC79A;--p-ink-d:#C5E5CC;--p-soft-d:#1F2F24;--sky1:#10221A;--sky2:#0A1710;--skyline:#244734;--wave:#2F5A42;--sun:#EFE3B5}
+:root[data-palette="mesto"]{--p-acc-l:#157A7A;--p-ink-l:#0E5252;--p-soft-l:#DAEFEF;--p-acc-d:#6FCACA;--p-ink-d:#BFE9E9;--p-soft-d:#183535;--sky1:#0C2626;--sky2:#071A1A;--skyline:#1C4E4E;--wave:#226060;--sun:#F0DFA8}
+:root[data-palette="fatra"]{--p-acc-l:#8A6A1E;--p-ink-l:#5C4612;--p-soft-l:#F1EAD6;--p-acc-d:#D8B860;--p-ink-d:#EEDDA6;--p-soft-d:#332B18;--sky1:#1B1F24;--sky2:#111418;--skyline:#363C45;--wave:#4A525C;--sun:#E7C466}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F171E; --surface:#16222B; --band:#1B2831;
+    --ink:#E8ECEF; --muted:#9AA7B1; --line:#27353F;
+    --accent:var(--p-acc-d); --accent-ink:var(--p-ink-d); --accent-soft:var(--p-soft-d);
+    --ok:#8FCB9F; --ok-soft:#1E3327;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F171E; --surface:#16222B; --band:#1B2831;
+  --ink:#E8ECEF; --muted:#9AA7B1; --line:#27353F;
+  --accent:var(--p-acc-d); --accent-ink:var(--p-ink-d); --accent-soft:var(--p-soft-d);
+  --ok:#8FCB9F; --ok-soft:#1E3327;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:84px}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.2vw,34px);margin-bottom:6px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:60ch;margin:0}
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.example{font-size:12px;color:var(--muted);margin-top:14px}
+
+.demo{background:var(--band);border-bottom:1px solid var(--line);font-size:14px}
+.demo .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap;min-height:46px;padding-block:6px}
+.demo label{display:flex;gap:8px;align-items:center;color:var(--muted)}
+.demo select{font:inherit;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.demo .tag{font-weight:600;color:var(--ink)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.brand span{color:var(--muted);font-family:var(--body);font-weight:400;font-size:15px;margin-left:8px}
+.menu{display:flex;gap:22px;align-items:center;font-size:15px}
+.menu a{color:var(--ink)}
+.menu a.tel{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums}
+@media (max-width:720px){.menu a:not(.tel){display:none}.brand span{display:none}}
+
+.hero{padding-block:36px 56px;border-top:0}
+.hero-media{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;max-width:100%;background:var(--sky1);color:#fff}
+.hero-media svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,4vw,44px);background:linear-gradient(to top,rgba(8,14,20,.86),rgba(8,14,20,0))}
+.hero h1{font-size:clamp(30px,5vw,56px);color:#fff;max-width:18ch}
+.hero p{color:rgba(255,255,255,.86);margin:12px 0 20px;max-width:52ch;font-size:clamp(15px,1.6vw,18px)}
+.media-note{position:absolute;top:14px;right:14px;font-size:12px;background:rgba(255,255,255,.14);color:#fff;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.3)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--radius);font-weight:600;font-size:16px;border:1.5px solid transparent;cursor:pointer;font-family:var(--body);line-height:1.2;background:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface)}
+.hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.55)}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-top:22px;overflow:hidden}
+.trust div{padding:18px 20px;border-left:1px solid var(--line)}
+.trust div:first-child{border-left:0}
+.trust b{display:block;font-family:var(--display);font-size:26px;font-weight:500;line-height:1.1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.trust small{color:var(--muted);font-size:14px}
+@media (max-width:720px){.trust{grid-template-columns:1fr 1fr}.trust div:nth-child(3){border-left:0}.trust div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:720px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ph{background:var(--band);aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;color:var(--muted);font-size:13px;position:relative}
+.ph.portrait{aspect-ratio:9/16}
+.ph .tag{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;background:var(--surface);color:var(--ink);padding:4px 9px;border-radius:999px;border:1px solid var(--line)}
+.card-body{padding:16px 18px 18px}
+.card-body h3{font-size:19px;margin-bottom:4px}
+.price{font-weight:600;font-variant-numeric:tabular-nums}
+.meta{color:var(--muted);font-size:14px}
+
+.about{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:start}
+@media (max-width:720px){.about{grid-template-columns:1fr}}
+.about .ph{aspect-ratio:4/5;border-radius:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:14px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.about p{max-width:62ch;margin:0 0 12px}
+.teamline{margin-top:18px;padding:12px 16px;border-radius:12px;background:var(--accent-soft);font-size:15px}
+.teamline a{font-weight:600}
+
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.team{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.team{grid-template-columns:1fr}}
+.member{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.member.lead{border-color:var(--accent)}
+.member .top{display:flex;gap:12px;align-items:center}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;font-weight:600;font-size:15px;flex:0 0 auto}
+.member h3{font-size:18px}
+.member .role{font-size:14px;color:var(--muted)}
+.member .areas-s{font-size:14px;color:var(--muted)}
+.member .go{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+.member .go .btn{padding:8px 14px;font-size:14px}
+.badge{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink)}
+
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:720px){.quotes{grid-template-columns:1fr}}
+blockquote{margin:0;padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;font-family:var(--display);font-size:19px;line-height:1.45}
+blockquote footer{font-family:var(--body);font-size:14px;color:var(--muted);margin-top:14px}
+.stars{color:#C9962B;letter-spacing:2px;font-size:14px}
+
+.sold{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sold-row{display:grid;grid-template-columns:1fr 64px 190px;gap:18px;padding:14px 20px;border-top:1px solid var(--line);align-items:center}
+.sold-row:first-child{border-top:0}
+.sold-row .days{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ok);background:var(--ok-soft);padding:4px 12px;border-radius:999px;font-size:14px;white-space:nowrap;justify-self:end;text-align:center;min-width:170px}
+.sold-row .loc{color:var(--muted);font-size:14px}
+.sold-row>.loc:nth-child(2){text-align:right}
+@media (max-width:560px){.sold-row{grid-template-columns:1fr 150px}.sold-row>.loc:nth-child(2){display:none}.sold-row .days{min-width:0}}
+
+.val{background:var(--accent-soft);border-radius:16px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.val h2{margin:0 0 4px}
+.val p{margin:0;color:var(--muted)}
+.form{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;max-width:520px}
+.form label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.form .f{margin-bottom:16px}
+.form input[type=text],.form input[type=tel],.form input[type=number],.form select{width:100%;padding:12px 14px;font-size:16px;font-family:var(--body);border:1.5px solid var(--line);border-radius:var(--radius);background:var(--ground);color:var(--ink)}
+.steps{display:flex;gap:8px;margin-bottom:22px}
+.steps i{height:4px;flex:1;border-radius:4px;background:var(--line)}
+.steps i.on{background:var(--accent)}
+.err{color:#B3261E;font-size:14px;margin-top:4px}
+.opt-toggle{background:none;border:0;color:var(--accent);font:inherit;font-weight:600;padding:0;cursor:pointer;margin-bottom:16px}
+.optional{border-top:1px dashed var(--line);padding-top:14px;margin-bottom:8px}
+.optional .hint{font-size:13px;color:var(--muted);margin-bottom:12px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.check input{margin-top:5px}
+.done{text-align:center;padding:10px 0}
+.done b{display:block;font-family:var(--display);font-size:22px;font-weight:500;margin-top:10px}
+
+.areas{display:flex;gap:10px;flex-wrap:wrap}
+.areas a{padding:10px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-weight:600;font-size:15px}
+.areas a:hover{border-color:var(--accent);color:var(--accent)}
+.sky{display:block;width:100%;color:var(--muted);fill:currentColor;opacity:.32}
+.sky-head{height:56px;margin-bottom:22px}
+.sky-foot{height:64px;margin-top:28px;opacity:.22}
+
+footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot .brand{font-size:18px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);z-index:30}
+.bar .btn{flex:1;justify-content:center}
+.btn-wa{background:#1F8F4E;color:#fff;border-color:transparent}
+.btn-wa:hover{background:#176E3C}
+@media (min-width:721px){
+  .bar{left:auto;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--line);border-radius:999px;padding:8px;box-shadow:0 8px 24px rgba(10,20,28,.14)}
+  .bar .btn{flex:0 0 auto;border-radius:999px}
+  body{padding-bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ba" viewBox="0 0 1200 220">
+    <rect x="95" y="186" width="50" height="14"/><polygon points="111,186 129,186 127,72 113,72"/><rect x="114" y="62" width="12" height="10"/><circle cx="120" cy="57" r="5"/>
+    <rect x="226" y="40" width="8" height="160"/><path d="M230 40 V12" stroke="currentColor" stroke-width="3" fill="none"/><ellipse cx="230" cy="96" rx="26" ry="8"/><ellipse cx="230" cy="72" rx="14" ry="5"/>
+    <polygon points="296,200 332,152 522,152 562,200"/><rect x="360" y="112" width="130" height="46"/>
+    <rect x="350" y="92" width="18" height="70"/><polygon points="350,92 359,78 368,92"/><rect x="392" y="98" width="12" height="64"/><polygon points="392,98 398,86 404,98"/>
+    <rect x="446" y="98" width="12" height="64"/><polygon points="446,98 452,86 458,98"/><rect x="482" y="92" width="18" height="70"/><polygon points="482,92 491,78 500,92"/>
+    <rect x="600" y="120" width="40" height="80"/><rect x="612" y="60" width="16" height="62"/><polygon points="607,60 620,8 633,60"/><circle cx="620" cy="7" r="4"/>
+    <rect x="680" y="100" width="22" height="100"/><ellipse cx="691" cy="98" rx="13" ry="10"/><polygon points="687,90 691,68 695,90"/><circle cx="691" cy="66" r="3"/>
+    <path d="M740 172 L1060 166" stroke="currentColor" stroke-width="5" fill="none"/><path d="M877 62 L800 170 M877 62 L1000 168" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    <path d="M905 200 L866 64 M935 200 L888 64" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="860" y="58" width="34" height="8"/><ellipse cx="877" cy="50" rx="46" ry="12"/><rect x="865" y="30" width="24" height="18" rx="5"/>
+  </symbol>
+  <symbol id="zl" viewBox="0 0 1200 220">
+    <polygon opacity=".55" points="0,200 90,140 180,165 300,80 420,150 520,105 620,160 740,95 860,150 960,110 1060,155 1200,90 1200,200"/>
+    <rect x="290" y="112" width="40" height="88"/><polygon points="282,112 310,66 338,112"/><path d="M310 66 V48" stroke="currentColor" stroke-width="3" fill="none"/>
+    <rect x="570" y="132" width="90" height="68"/>
+    <rect x="558" y="84" width="24" height="116"/><ellipse cx="570" cy="82" rx="14" ry="9"/><polygon points="564,76 570,52 576,76"/>
+    <rect x="648" y="84" width="24" height="116"/><ellipse cx="660" cy="82" rx="14" ry="9"/><polygon points="654,76 660,52 666,76"/>
+    <rect x="692" y="98" width="18" height="102"/><polygon points="688,98 701,74 714,98"/>
+    <rect x="780" y="150" width="220" height="10"/>
+    <rect x="790" y="160" width="10" height="40"/><rect x="830" y="160" width="10" height="40"/><rect x="870" y="160" width="10" height="40"/><rect x="910" y="160" width="10" height="40"/><rect x="950" y="160" width="10" height="40"/><rect x="990" y="160" width="10" height="40"/>
+    <polygon points="780,150 835,118 890,150"/><polygon points="890,150 945,118 1000,150"/>
+    <rect x="1080" y="122" width="40" height="78"/><rect x="1092" y="72" width="16" height="50"/><polygon points="1088,72 1100,32 1112,72"/>
+  </symbol>
+</svg>
+
+<div class="demo" aria-label="Ukážka personalizácie">
+  <div class="wrap">
+    <span class="tag">Ukážka</span>
+    <label>Maklér <select id="pickBroker"></select></label>
+    <label>Farby <select id="pickPalette">
+      <option value="park">Horský park (šalviová)</option><option value="hrad">Hrad (tehlová)</option><option value="piesky">Zlaté piesky (jantárová)</option>
+      <option value="kamzik">Kamzík (lesná)</option><option value="mesto">Nové Mesto (tyrkysová)</option><option value="fatra">Malá Fatra (grafit a zlato)</option><option value="dunaj">Dunaj (modrá)</option>
+    </select></label>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">VIANEMA<span data-f="name"></span></a>
+    <nav class="menu" aria-label="Hlavné menu">
+      <a href="#ponuky">Ponuky</a>
+      <a href="#o-mne">O mne</a>
+      <a href="#tim" id="navTim">Tím</a>
+      <a href="#lokality">Lokality</a>
+      <a class="tel" data-f="tel-link" href="#"><span data-f="phone"></span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-media" role="img" aria-label="Miesto pre hlavnú fotografiu alebo video">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="1600" height="900" style="fill:var(--sky1)"/>
+        <circle cx="1290" cy="200" r="52" style="fill:var(--sun)" opacity=".9"/>
+        <use id="heroSky" href="#ba" x="-40" y="420" width="1700" height="312" style="color:var(--skyline);fill:currentColor"/>
+        <rect y="730" width="1600" height="170" style="fill:var(--sky2)"/>
+        <path d="M0 760 Q200 748 400 760 T800 760 T1200 760 T1600 760" style="stroke:var(--wave)" stroke-width="3" fill="none" opacity=".7"/>
+        <path d="M0 800 Q200 788 400 800 T800 800 T1200 800 T1600 800" style="stroke:var(--wave)" stroke-width="3" fill="none" opacity=".45"/>
+      </svg>
+      <span class="media-note">Sem príde fotka alebo video makléra · web ho upraví sám</span>
+      <div class="hero-copy">
+        <h1 data-f="headline"></h1>
+        <p data-f="sub"></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#ponuky">Pozrieť ponuky</a>
+          <a class="btn btn-ghost" href="#ocenenie" data-open-form>Zistiť cenu nehnuteľnosti</a>
+        </div>
+      </div>
+    </div>
+    <div class="trust" id="trust" aria-label="Dôvera"></div>
+  </div>
+</section>
+
+<section id="ponuky">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Aktuálne</div><h2>Ponuky</h2></div>
+      <a href="#">Všetky ponuky →</a>
+    </div>
+    <div class="grid3" id="listings"></div>
+    <div class="example">Aktuálne ponuky makléra z vianemareal.eu (ponukové ceny, stav k 18. 9. 2026). Na živom webe sa aktualizujú automaticky.</div>
+  </div>
+</section>
+
+<section id="o-mne">
+  <div class="wrap about">
+    <div class="ph" id="portrait">Portrét</div>
+    <div>
+      <div class="eyebrow">O mne</div>
+      <h2 data-f="name2"></h2>
+      <p class="lede" data-f="role"></p>
+      <p style="margin-top:16px" data-f="bio1"></p>
+      <p data-f="bio2"></p>
+      <div class="chips" id="chips"></div>
+      <div class="teamline" id="teamline">Som súčasťou tímu Vianema Bratislava. Pobočku vedie <a href="../ales/">Aleš Machovič</a> — <a href="#tim">celý tím</a>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="tim">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Vianema · pobočka Bratislava</div><h2>Tím, s ktorým pracujem</h2></div>
+      <a href="https://www.vianemareal.eu/pobocka/1-Pobo%C4%8Dka%20Bratislava">Pobočka na vianema.eu →</a>
+    </div>
+    <div class="team" id="team"></div>
+    <div class="example">Každý maklér má vlastnú verziu tohto webu (meno, kontakt, lokality, farby, panoráma) a všetky sú navzájom prelinkované vrátane webu manažéra pobočky. V ukážke sa prepnutím karty otvorí web daného makléra.</div>
+  </div>
+</section>
+
+<section id="videa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Z Instagramu</div><h2>Videá</h2></div>
+      <a data-f="ig-link" href="#">Sledovať na Instagrame →</a>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="ph portrait"><span class="tag">Reel</span>Najnovšie video</div></div>
+      <div class="card"><div class="ph portrait"><span class="tag">Reel</span>Predchádzajúce</div></div>
+      <div class="card"><div class="ph portrait"><span class="tag">Reel</span>Predchádzajúce</div></div>
+    </div>
+    <div class="example">Vždy najnovšie 3 videá — načítavajú sa automaticky z Instagramu makléra (ak vlastný nemá, z profilu Vianema).</div>
+  </div>
+</section>
+
+<section id="referencie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Referencie</div><h2>Čo hovoria klienti</h2></div>
+      <a class="btn btn-ghost" href="#">★ Ohodnoť ma na Google</a>
+    </div>
+    <div class="quotes">
+      <blockquote>„Byt sa predal za dva týždne a za cenu, ktorú sme si odhadli na začiatku. Nič sme nemuseli riešiť sami."<footer><span class="stars">★★★★★</span><br>Jana K. · Google recenzia</footer></blockquote>
+      <blockquote>„Pomoc aj v komplikovanej dedičskej situácii, kde sme netušili, ako začať."<footer><span class="stars">★★★★★</span><br>Peter M. · Google recenzia</footer></blockquote>
+      <blockquote>„Na rovinu nám povedali, že naša predstava o cene je vysoká. Mali pravdu a ušetrili nám mesiace."<footer><span class="stars">★★★★★</span><br>Martina a Tomáš · Google recenzia</footer></blockquote>
+    </div>
+    <div class="example">Ukážkové texty. Nahradia sa vybranými recenziami z Google daného makléra (s odkazom na originál).</div>
+  </div>
+</section>
+
+<section id="predane">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Výsledky</div><h2>Vybrané predané nehnuteľnosti</h2></div></div>
+    <div class="sold" id="sold"></div>
+    <div class="example">Ukážkový archív — doplní sa vlastnými predajmi makléra. Pri nových ponukách sa počet dní počíta automaticky zo zmeny stavu na vianema.eu.</div>
+  </div>
+</section>
+
+<section id="ocenenie">
+  <div class="wrap">
+    <div class="val">
+      <div>
+        <div class="eyebrow">Predávate?</div>
+        <h2>Koľko stojí vaša nehnuteľnosť</h2>
+        <p>Rozbor od makléra do 24 hodín — nie automatické číslo. Vyplnenie zaberie 2 minúty, nič nepodpisujete.</p>
+      </div>
+      <button class="btn btn-primary" id="openForm" type="button">Zistiť cenu</button>
+    </div>
+    <div class="form" id="form" hidden>
+      <div class="steps"><i id="s1" class="on"></i><i id="s2"></i></div>
+      <div id="step1">
+        <div class="f"><label for="typ">Typ nehnuteľnosti</label><select id="typ"><option value="">Vyberte</option><option>Byt</option><option>Dom</option><option>Pozemok</option></select><div class="err" id="e-typ" hidden>Vyberte typ nehnuteľnosti.</div></div>
+        <div class="f"><label for="adresa">Adresa alebo lokalita</label><input id="adresa" type="text" placeholder="napr. Ružinov, Jégeho alej"><div class="err" id="e-adresa" hidden>Zadajte aspoň lokalitu.</div></div>
+        <div class="f"><label for="m2">Výmera (m²)</label><input id="m2" type="number" placeholder="napr. 65" min="1"><div class="err" id="e-m2" hidden>Zadajte výmeru v m².</div></div>
+        <button class="opt-toggle" id="toggleOpt" type="button">+ pridať detaily (voliteľné)</button>
+        <div class="optional" id="optional" hidden>
+          <div class="hint">Nepovinné — pomôže presnejšiemu rozboru. Zvyšok doladíme v telefonáte.</div>
+          <div class="f"><label for="stav">Stav nehnuteľnosti</label><select id="stav"><option value="">Nevyplnené</option><option>Pôvodný stav</option><option>Čiastočná rekonštrukcia</option><option>Po kompletnej rekonštrukcii</option><option>Novostavba</option></select></div>
+          <div class="f"><label for="izby">Počet izieb</label><select id="izby"><option value="">Nevyplnené</option><option>1</option><option>2</option><option>3</option><option>4 a viac</option></select></div>
+        </div>
+        <button class="btn btn-primary" id="next" type="button" style="width:100%;justify-content:center">Pokračovať</button>
+      </div>
+      <div id="step2" hidden>
+        <div class="f"><label for="meno">Meno</label><input id="meno" type="text" placeholder="Meno a priezvisko"><div class="err" id="e-meno" hidden>Zadajte meno.</div></div>
+        <div class="f"><label for="tel">Telefón</label><input id="tel" type="tel" placeholder="+421 9xx xxx xxx"><div class="err" id="e-tel" hidden>Zadajte telefónne číslo.</div></div>
+        <div class="f"><label for="kedy">Kedy plánujete predávať? (voliteľné)</label><select id="kedy"><option value="">Neviem ešte</option><option>Do 3 mesiacov</option><option>Neskôr</option><option>Len zisťujem cenu</option></select></div>
+        <div class="f check"><input id="gdpr" type="checkbox"><label for="gdpr" style="font-weight:400;margin:0">Súhlasím so spracovaním údajov na účel kontaktovania.</label></div>
+        <div class="err" id="e-gdpr" hidden>Bez súhlasu vás nemôžeme kontaktovať.</div>
+        <div class="actions" style="margin-top:14px">
+          <button class="btn btn-ghost" id="back" type="button">Späť</button>
+          <button class="btn btn-primary" id="send" type="button" style="flex:1;justify-content:center">Odoslať dopyt</button>
+        </div>
+      </div>
+      <div class="done" id="done" hidden>
+        <span class="stars" style="font-size:26px">✓</span>
+        <b>Ďakujeme. Ozveme sa do 24 hodín.</b>
+        <div class="meta" style="margin-top:6px">Dopyt ide priamo na e-mail makléra: <span data-f="email"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lokality">
+  <div class="wrap">
+    <svg class="sky sky-head" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use id="headSky" href="#ba"/></svg>
+    <div class="sec-head"><div><div class="eyebrow">Kde predávam</div><h2>Lokality</h2></div></div>
+    <div class="areas" id="areas"></div>
+    <div class="example">Každá lokalita bude mať vlastnú stránku s cenami a nájmami — vstupný bod z Googlu.</div>
+  </div>
+</section>
+</main>
+
+<footer class="site" id="kontakt">
+  <div class="wrap foot">
+    <div><div class="brand" data-f="name3"></div><span data-f="role2"></span><br><span id="branch">Vianema s.r.o. · Pobočka Bratislava · Jašíkova 2, BC Kerametal · manažér pobočky <a href="../ales/">Aleš Machovič</a></span></div>
+    <div class="actions">
+      <a class="btn btn-ghost" data-f="tel-link" href="#">Zavolať</a>
+      <a class="btn btn-ghost" data-f="wa-link" href="#">WhatsApp</a>
+      <a class="btn btn-ghost" data-f="mail-link" href="#">E‑mail</a>
+    </div>
+  </div>
+  <div class="wrap"><svg class="sky sky-foot" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use id="footSky" href="#ba"/></svg></div>
+</footer>
+
+<div class="bar" aria-label="Rýchly kontakt">
+  <a class="btn btn-wa" data-f="wa-link" href="#">WhatsApp</a>
+  <a class="btn btn-primary" href="#ocenenie" data-open-form>Zistiť cenu</a>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var ALES={name:'Aleš Machovič',role:'Manažér pobočky Bratislava',url:'../ales/',tel:'+421915627008',areas:'Ružinov · Petržalka · Rača'};
+  var B={
+    silvia:{name:'Silvia Hurová',role:'Realitná maklérka · Home stager',phone:'+421 917 133 880',tel:'+421917133880',email:'hurova@vianema.eu',ig:'https://www.instagram.com/homeshake_time',palette:'park',sky:'ba',photo:'silvia-portret.jpg',photo:'silvia-portret.jpg',
+      headline:'Byt pripravím tak, aby sa predal za viac',
+      sub:'Obchodníčka roka Vianema 2025. Predaj, prenájom aj zastupovanie kupujúceho v Bratislave — s home stagingom pred každým predajom.',
+      trust:[['2025','Obchodníčka roka Vianema'],['Home staging','príprava bytu na predaj'],['SK · CZ · EN','jazyky'],['24 h','rozbor ceny od maklérky']],
+      bio1:'Predávam rezidenčné aj komerčné nehnuteľnosti, zastupujem kupujúcich pri výbere a riešim prenájmy. Pred predajom byt pripravím ako home stager — analytický prístup a dôraz na detail sa premietnu do ceny aj rýchlosti predaja.',
+      bio2:'V roku 2025 som získala titul Obchodníčka roka za obrat realizovaných obchodov.',
+      chips:['Obchodníčka roka 2025','Home stager','SK · CZ · EN'],areas:['Bratislava','Ružinov','Staré Mesto','Petržalka','Nové Mesto'],
+      listings:[['Byt','4-izbový byt s terasou, Rača','499 000 €','112 m²','silvia-2.jpg'],['Dom','6-izbový dom s bazénom, Limbach','1 050 000 €','1 188 m²','silvia-3.jpg'],['Prenájom','4-izbový byt, Dunajská Streda','570 € / mesiac','86 m²','silvia-1.jpg']],
+      sold:[['3-izbový byt','Ružinov','12 dní'],['2-izbový byt','Staré Mesto','19 dní'],['Rodinný dom','Chorvátsky Grob','27 dní']]},
+    nina:{name:'Ing. Nina Žigová',role:'Realitná maklérka',phone:'+421 903 444 272',tel:'+421903444272',email:'zigova@vianema.eu',ig:'https://www.instagram.com/ninocka_06',palette:'hrad',sky:'ba',photo:'nina-portret.jpg',photo:'nina-portret.jpg',
+      headline:'Staré Mesto a Dúbravka — byty, ktoré poznám osobne',
+      sub:'Byty, domy a pozemky v Bratislave. Domáce lokality: Staré Mesto a Dúbravka.',
+      trust:[['Staré Mesto','a Dúbravka — domáce lokality'],['SK · CZ','jazyky'],['Byty · domy','· pozemky'],['24 h','rozbor ceny od maklérky']],
+      bio1:'Zameriavam sa na byty, domy a pozemky v Bratislave, najmä v Starom Meste a Dúbravke — lokalitách, kde poznám ceny aj ľudí, ktorí tu kupujú.',
+      bio2:'Komunikujem po slovensky aj po česky.',
+      chips:['Staré Mesto','Dúbravka','SK · CZ'],areas:['Staré Mesto','Dúbravka','Karlova Ves','Ružinov','Bratislava'],
+      listings:[['Byt','2-izbový byt, Staré Mesto — Vajanského nábrežie','284 999 €','60,77 m²','nina-1.jpg'],['Byt','4-izbový byt s parkovaním, Dúbravka','424 999 €','115 m²','nina-2.jpg']],
+      sold:[['2-izbový byt','Staré Mesto','16 dní'],['3-izbový byt','Dúbravka','22 dní'],['1-izbový byt','Karlova Ves','9 dní']]},
+    nikoleta:{name:'Nikoleta Szalayová',role:'Realitná maklérka',phone:'+421 914 296 512',tel:'+421914296512',email:'szalayova@vianema.eu',ig:'https://www.instagram.com/vianema',palette:'piesky',sky:'ba',photo:'nikoleta-portret.jpg',photo:'nikoleta-portret.jpg',
+      headline:'Od Petržalky po novostavby za Bratislavou',
+      sub:'Mestské byty v Petržalke a Ružinove, rodinné domy a novostavby v Malackách a na Žitnom ostrove.',
+      trust:[['8','aktuálnych ponúk'],['Novostavby','aj mimo Bratislavy'],['2–4 izb.','mestské byty'],['24 h','rozbor ceny od maklérky']],
+      bio1:'Predávam 2- až 4-izbové byty v Petržalke a Ružinove a zároveň rodinné domy a novostavby mimo Bratislavy — Malacky, Kútniky, Horné Mýto.',
+      bio2:'Pomôžem vám s predajom v meste aj s kúpou domu za ním.',
+      chips:['Petržalka','Ružinov','Novostavby'],areas:['Petržalka','Ružinov','Malacky','Kútniky','Horné Mýto'],
+      listings:[['Byt','2-izbový byt, Slnečnice — Petržalka','279 999 €','51 m² · svetlý','nikoleta-1.jpg'],['Byt','4-izbový byt s balkónom, Humenské námestie','339 999 €','86 m²','nikoleta-2.jpg'],['Byt','2-izbový byt po rekonštrukcii, Ružinov','266 990 €','55,53 m² · balkón','nikoleta-3.jpg']],
+      sold:[['2-izbový byt','Petržalka','11 dní'],['Novostavba RD','Horné Mýto','34 dní'],['3-izbový byt','Ružinov','15 dní']]},
+    slavomir:{name:'Mgr. Slavomír Kollár',role:'Realitný maklér',phone:'+421 911 856 756',tel:'+421911856756',email:'kollar@vianema.eu',ig:'https://www.instagram.com/vianema',palette:'kamzik',sky:'ba',photo:'slavo.jpg',
+      headline:'Karlova Ves a Ružinov — predaj aj prenájom',
+      sub:'Byty na predaj aj na prenájom v Bratislave, najmä Karlova Ves a Ružinov.',
+      trust:[['Predaj','aj prenájom'],['Karlova Ves','· Ružinov'],['Byty','1- až 3-izbové'],['24 h','rozbor ceny od makléra']],
+      bio1:'Zameriavam sa na byty v Karlovej Vsi a Ružinove — na predaj aj na prenájom. Pomôžem vám nastaviť cenu tak, aby ste nečakali mesiace.',
+      bio2:'',
+      chips:['Karlova Ves','Ružinov','Prenájmy'],areas:['Karlova Ves','Ružinov','Dúbravka','Bratislava'],
+      listings:[['Byt','1-izbový byt, starý Ružinov — Trenčianska','189 990 €','37 m²','slavomir-2.jpg'],['Prenájom','3-izbový byt pri lese, Karlova Ves — Kuklovská','960 € / mesiac','72 m²','slavomir-1.jpg']],
+      sold:[['1-izbový byt','Ružinov','8 dní'],['2-izbový byt','Karlova Ves','20 dní'],['Prenájom 3-izb.','Karlova Ves','5 dní']]},
+    rastislav:{name:'Rastislav Michalina',role:'Realitný maklér',phone:'+421 944 159 957',tel:'+421944159957',email:'michalina@vianema.eu',ig:'https://www.instagram.com/vianema',palette:'mesto',sky:'ba',photo:'rastislav-portret.jpg',photo:'rastislav-portret.jpg',
+      headline:'Byty, domy a pozemky v Bratislave a Stupave',
+      sub:'Ružinov, Nové Mesto, Petržalka a okolie Bratislavy vrátane Stupavy.',
+      trust:[['5','aktuálnych ponúk'],['Byty · domy','· pozemky · garáže'],['Stupava','a okolie Bratislavy'],['24 h','rozbor ceny od makléra']],
+      bio1:'Predávam byty, domy, pozemky aj garáže v Bratislave — Ružinov, Nové Mesto, Petržalka — a v Stupave a okolí.',
+      bio2:'',
+      chips:['Ružinov','Nové Mesto','Stupava'],areas:['Ružinov','Nové Mesto','Petržalka','Stupava','Bratislava'],
+      listings:[['Byt','2-izbový byt s parkovaním, Gloria — Nivy','289 990 €','66 m² · moderný','rastislav-1.jpg'],['Dom','5-izbový dom so záhradou, Stupava','379 990 €','307 m²','rastislav-2.jpg'],['Byt','2-izbový byt s parkovaním, Koliba','399 990 €','70 m² · prémiový','rastislav-3.jpg']],
+      sold:[['2-izbový byt','Ružinov','13 dní'],['Rodinný dom','Stupava','31 dní'],['Pozemok','Stupava','24 dní']]},
+    jaroslav:{name:'Jaroslav Rajčan',role:'Obchodný manažér',phone:'+421 917 376 597',tel:'+421917376597',email:'rajcan@vianema.eu',ig:'https://www.instagram.com/vianema',palette:'fatra',sky:'zl',team:false,branch:'Vianema s.r.o. · Martin, Žilina, Vrútky a okolie',
+      headline:'Investície a pozemky pod Malou Fatrou',
+      sub:'17 rokov v realitách. Analýza pozemkov a nehnuteľností, investičné príležitosti — Martin, Žilina, Vrútky, Zvolen a okolie.',
+      trust:[['17+','rokov v realitách'],['Investície','analýza trhu a pozemkov'],['8+','ponúk v portfóliu'],['24 h','rozbor ceny od makléra']],
+      bio1:'Viac ako 17 rokov sa venujem realitám so zameraním na analýzu trhu, pozemky a investičné príležitosti. Sledujem vývoj trhu na strednom Slovensku a klientom pomáham rozhodnúť sa na základe čísel.',
+      bio2:'',
+      chips:['17 rokov praxe','Investície','Pozemky'],areas:['Martin','Žilina','Vrútky','Zvolen','Turiec'],
+      listings:[['Pozemok','Investičný pozemok, Martin','na vyžiadanie','2 400 m²'],['Hala','Skladová hala, Vrútky','na vyžiadanie','850 m²'],['Byt','3-izbový byt, Žilina','189 000 €','72 m² · Hliny']],
+      sold:[['Stavebný pozemok','Martin','40 dní'],['3-izbový byt','Žilina','17 dní'],['Rodinný dom','Zvolen','29 dní']]}
+  };
+  var ORDER=['silvia','nina','nikoleta','slavomir','rastislav','jaroslav'];
+
+  function initials(n){return n.replace(/^(Ing\.|Mgr\.)\s*/,'').split(' ').map(function(w){return w[0]}).slice(0,2).join('')}
+  function setAll(sel,fn){document.querySelectorAll(sel).forEach(fn)}
+  function setSky(id){['heroSky','headSky','footSky'].forEach(function(k){$(k).setAttribute('href','#'+id)})}
+
+  function render(id){
+    var b=B[id];
+    document.documentElement.setAttribute('data-palette',b.palette);
+    $('pickPalette').value=b.palette;
+    setSky(b.sky);
+    setAll('[data-f="name"],[data-f="name2"],[data-f="name3"]',function(e){e.textContent=b.name});
+    setAll('[data-f="role"],[data-f="role2"]',function(e){e.textContent=b.role});
+    setAll('[data-f="phone"]',function(e){e.textContent=b.phone});
+    setAll('[data-f="tel-link"]',function(e){e.href='tel:'+b.tel});
+    setAll('[data-f="wa-link"]',function(e){e.href='https://wa.me/'+b.tel.replace('+','')});
+    setAll('[data-f="mail-link"]',function(e){e.href='mailto:'+b.email});
+    setAll('[data-f="email"]',function(e){e.textContent=b.email});
+    setAll('[data-f="ig-link"]',function(e){e.href=b.ig});
+    setAll('[data-f="headline"]',function(e){e.textContent=b.headline});
+    setAll('[data-f="sub"]',function(e){e.textContent=b.sub});
+    setAll('[data-f="bio1"]',function(e){e.textContent=b.bio1});
+    setAll('[data-f="bio2"]',function(e){e.textContent=b.bio2;e.hidden=!b.bio2});
+    document.title=b.name+' · Vianema';
+    $('trust').innerHTML=b.trust.map(function(t){return '<div><b>'+t[0]+'</b><small>'+t[1]+'</small></div>'}).join('');
+    $('chips').innerHTML=b.chips.map(function(c){return '<span class="chip">'+c+'</span>'}).join('');
+    $('areas').innerHTML=b.areas.map(function(a){return '<a href="#">'+a+'</a>'}).join('');
+    $('listings').innerHTML=b.listings.map(function(l){return '<article class="card"><div class="ph"><span class="tag">'+l[0]+'</span>'+(l[4]?'<img src="'+l[4]+'" alt="" style="width:100%;height:100%;object-fit:cover;display:block">':'Fotografia z ponuky')+'</div><div class="card-body"><h3>'+l[1]+'</h3><div class="price">'+l[2]+'</div><div class="meta">'+l[3]+'</div></div></article>'}).join('');
+    $('sold').innerHTML=b.sold.map(function(s){return '<div class="sold-row"><div>'+s[0]+'<div class="loc">'+s[1]+'</div></div><div class="loc">2026</div><span class="days">predané za '+s[2]+'</span></div>'}).join('');
+    var ph=$('portrait'); if(b.photo){ph.innerHTML='<img src="'+b.photo+'" alt="'+b.name+'" style="width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block">'}else{ph.textContent='Portrét'}
+    var inTeam = b.team!==false;
+    $('tim').hidden=!inTeam; $('navTim').hidden=!inTeam; $('teamline').hidden=!inTeam;
+    $('branch').innerHTML = b.branch || 'Vianema s.r.o. · Pobočka Bratislava · Jašíkova 2, BC Kerametal · manažér pobočky <a href="'+ALES.url+'">Aleš Machovič</a>';
+    var cards=['<div class="member lead"><div class="top"><div class="avatar">AM</div><div><h3>'+ALES.name+'</h3><div class="role">'+ALES.role+'</div></div></div><div class="areas-s">'+ALES.areas+'</div><div><span class="badge">Manažér pobočky</span></div><div class="go"><a class="btn btn-primary" href="'+ALES.url+'">Web manažéra →</a><a class="btn btn-ghost" href="tel:'+ALES.tel+'">Zavolať</a></div></div>'];
+    ORDER.filter(function(k){return k!==id && B[k].team!==false}).forEach(function(k){var m=B[k];
+      cards.push('<div class="member"><div class="top"><div class="avatar" style="overflow:hidden">'+(m.photo?'<img src="'+m.photo+'" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block">':initials(m.name))+'</div><div><h3>'+m.name+'</h3><div class="role">'+m.role+'</div></div></div><div class="areas-s">'+m.areas.slice(0,3).join(' · ')+'</div><div class="go"><a class="btn btn-primary" href="#top" data-go="'+k+'">Web makléra →</a><a class="btn btn-ghost" href="tel:'+m.tel+'">Zavolať</a></div></div>')});
+    $('team').innerHTML=cards.join('');
+    $('pickBroker').value=id;
+    try{localStorage.setItem('makler',id)}catch(e){}
+  }
+
+  $('pickBroker').innerHTML=ORDER.map(function(k){return '<option value="'+k+'">'+B[k].name+'</option>'}).join('');
+  $('pickBroker').addEventListener('change',function(){render(this.value);window.scrollTo({top:0,behavior:'smooth'})});
+  $('pickPalette').addEventListener('change',function(){document.documentElement.setAttribute('data-palette',this.value)});
+  document.addEventListener('click',function(e){var a=e.target.closest('[data-go]');if(!a)return;e.preventDefault();render(a.getAttribute('data-go'));window.scrollTo({top:0,behavior:'smooth'})});
+
+  var start='silvia';try{var s=localStorage.getItem('makler');if(s&&B[s])start=s}catch(e){}
+  var hh=(location.hash||'').replace('#','');if(hh&&B[hh])start=hh;
+  render(start);
+  window.addEventListener('hashchange',function(){var h=(location.hash||'').replace('#','');if(h&&B[h]){render(h);window.scrollTo({top:0})}});
+
+  var form=$('form'),s1=$('step1'),s2=$('step2'),done=$('done'),opt=$('optional');
+  $('openForm').addEventListener('click',function(){form.hidden=!form.hidden;if(!form.hidden){form.scrollIntoView({behavior:'smooth',block:'start'})}});
+  setAll('[data-open-form]',function(a){a.addEventListener('click',function(e){e.preventDefault();form.hidden=false;form.scrollIntoView({behavior:'smooth',block:'start'})})});
+  $('toggleOpt').addEventListener('click',function(){opt.hidden=!opt.hidden;this.textContent=opt.hidden?'+ pridať detaily (voliteľné)':'− skryť detaily'});
+  function show(id,bad){$(id).hidden=!bad;return bad}
+  $('next').addEventListener('click',function(){var bad=false;bad=show('e-typ',!$('typ').value)||bad;bad=show('e-adresa',!$('adresa').value.trim())||bad;bad=show('e-m2',!$('m2').value)||bad;if(bad)return;s1.hidden=true;s2.hidden=false;$('s2').classList.add('on')});
+  $('back').addEventListener('click',function(){s2.hidden=true;s1.hidden=false;$('s2').classList.remove('on')});
+  $('send').addEventListener('click',function(){var bad=false;bad=show('e-meno',!$('meno').value.trim())||bad;bad=show('e-tel',!$('tel').value.trim())||bad;bad=show('e-gdpr',!$('gdpr').checked)||bad;if(bad)return;s2.hidden=true;done.hidden=false});
+  ['typ','adresa','m2','meno','tel'].forEach(function(id){$(id).addEventListener('input',function(){$('e-'+id).hidden=true})});
+  $('gdpr').addEventListener('change',function(){$('e-gdpr').hidden=true});
+})();
+</script>
+
+</body></html>
