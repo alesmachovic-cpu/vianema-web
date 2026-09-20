@@ -1,0 +1,515 @@
+<!doctype html><html lang="sk" data-palette="kamzik"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mgr. Slavomír Kollár · realitný maklér Bratislava · Vianema</title>
+<meta name="description" content="Mgr. Slavomír Kollár — realitný maklér Vianema v Bratislave a okolí, srdcovka Karlova Ves a Dúbravka. Predaj, kúpa a prenájom nehnuteľností, 10+ rokov v realitách.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Slavomír Kollár — realitný maklér, Bratislava">
+<meta property="og:description" content="Realitné služby na najvyššej úrovni. Predaj, kúpa a prenájom nehnuteľností v Bratislave a okolí.">
+<meta property="og:image" content="https://alesmachovic-cpu.github.io/vianema-web/slavomir/hero.jpg">
+<meta name="theme-color" content="#2F5D3A">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --acc-l:#2F5D3A; --ink-l:#1F3F27; --soft-l:#DFEBE1;
+  --acc-d:#8CC79A; --ink-d:#C5E5CC; --soft-d:#1F2F24;
+  --sky1:#10221A; --sky2:#0A1710;
+
+  --ground:#F2F4F1; --surface:#FFFFFF; --band:#E7E9E3;
+  --ink:#14202A; --muted:#5B6770; --line:#D6DBD7;
+  --accent:var(--acc-l); --accent-ink:var(--ink-l); --accent-soft:var(--soft-l);
+  --ok:#2E6B3F; --ok-soft:#E1EFE4;
+  --radius:10px;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F171E; --surface:#16222B; --band:#1B2831;
+    --ink:#E8ECEF; --muted:#9AA7B1; --line:#27353F;
+    --accent:var(--acc-d); --accent-ink:var(--ink-d); --accent-soft:var(--soft-d);
+    --ok:#8FCB9F; --ok-soft:#1E3327;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F171E; --surface:#16222B; --band:#1B2831;
+  --ink:#E8ECEF; --muted:#9AA7B1; --line:#27353F;
+  --accent:var(--acc-d); --accent-ink:var(--ink-d); --accent-soft:var(--soft-d);
+  --ok:#8FCB9F; --ok-soft:#1E3327;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:84px}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.2vw,34px);margin-bottom:6px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:60ch;margin:0}
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.note{font-size:13px;color:var(--muted);margin-top:14px}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.brand span{color:var(--muted);font-family:var(--body);font-weight:400;font-size:15px;margin-left:8px}
+.menu{display:flex;gap:22px;align-items:center;font-size:15px}
+.menu a{color:var(--ink)}
+.menu a.tel{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums}
+.subnav{display:none}
+
+.hero{padding-block:36px 56px;border-top:0}
+.hero-media{position:relative;border-radius:14px;overflow:hidden;max-width:100%;background:var(--sky1);color:#fff}
+.hero-art{position:relative;aspect-ratio:16/9;max-width:100%}
+.hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 30%;display:block}
+.hero-copy{position:absolute;top:0;right:0;bottom:0;width:min(47%,500px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,3vw,38px) clamp(20px,3vw,38px) clamp(20px,3vw,38px) clamp(14px,2vw,24px);background:linear-gradient(to left,rgba(8,16,12,.9) 35%,rgba(8,16,12,0))}
+.hero h1{font-size:clamp(28px,3.6vw,42px);color:#fff}
+.hero p{color:rgba(255,255,255,.92);margin:14px 0 20px;font-size:clamp(14px,1.4vw,16px);line-height:1.55}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--radius);font-weight:600;font-size:16px;border:1.5px solid transparent;cursor:pointer;font-family:var(--body);line-height:1.2;background:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface)}
+.hero .btn-primary{background:#fff;color:#1F3F27}
+.hero .btn-primary:hover{background:#DFEBE1}
+.hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.55)}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-top:22px;overflow:hidden}
+.trust div{padding:18px 20px;border-left:1px solid var(--line)}
+.trust div:first-child{border-left:0}
+.trust b{display:block;font-family:var(--display);font-size:26px;font-weight:500;line-height:1.1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.trust small{color:var(--muted);font-size:14px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:block;color:inherit}
+a.card:hover{border-color:var(--accent)}
+.ph{background:var(--band);aspect-ratio:4/3;max-width:100%;position:relative;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph .tag{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;background:var(--surface);color:var(--ink);padding:4px 9px;border-radius:999px;border:1px solid var(--line)}
+.offers .ph{aspect-ratio:16/10}
+.card-body{padding:16px 18px 18px}
+.card-body h3{font-size:19px;margin-bottom:4px}
+.price{font-weight:600;font-variant-numeric:tabular-nums}
+.meta{color:var(--muted);font-size:14px}
+
+.about{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:start}
+.about .ph{aspect-ratio:4/5;border-radius:14px;background:#fff}
+.about .ph img{object-position:50% 12%}
+.about p{max-width:62ch;margin:0 0 12px}
+.about .role{margin-top:4px}
+.work{margin-top:34px;grid-template-columns:repeat(6,1fr)}
+.work .partner{grid-column:span 3}
+.work .partner.wide{grid-column:1/-1}
+.work .partner.third{grid-column:span 2}
+.work .wide ul{columns:2;column-gap:32px}
+.work .wide li{break-inside:avoid}
+.partner{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.partner h3{font-size:19px;margin-bottom:8px}
+.partner p{margin:0 0 8px;font-size:15.5px;color:var(--muted)}
+.partner p:last-child{margin-bottom:0}
+.partner ul{margin:0;padding-left:18px;font-size:15.5px;color:var(--muted)}
+.partner li{margin-bottom:6px}
+.partner li:last-child{margin-bottom:0}
+.closing{margin-top:26px;padding:20px 24px;border-radius:14px;background:var(--accent-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.closing b{font-family:var(--display);font-weight:500;font-size:22px}
+
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+blockquote{margin:0;padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;font-size:16px;line-height:1.55}
+blockquote p{margin:0 0 10px}
+.js blockquote .q{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:9;overflow:hidden}
+.js blockquote.open .q{display:block;-webkit-line-clamp:unset;overflow:visible}
+blockquote .more{display:none;background:none;border:0;padding:0;margin:2px 0 6px;color:var(--accent);font:inherit;font-weight:600;cursor:pointer}
+.js blockquote .more{display:inline-block}
+blockquote footer{font-size:14px;color:var(--muted);margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+blockquote footer b{display:block;color:var(--ink);font-weight:600}
+
+.sold-tag{font-size:12px;font-weight:600;color:var(--ok);background:var(--ok-soft);padding:4px 9px;border-radius:999px;position:absolute;left:12px;top:12px}
+
+.val{background:var(--accent-soft);border-radius:16px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.val h2{margin:0 0 4px}
+.val p{margin:0;color:var(--muted)}
+.form{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;max-width:520px}
+.form label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.form .f{margin-bottom:16px}
+.form input[type=text],.form input[type=tel],.form input[type=number],.form select{width:100%;padding:12px 14px;font-size:16px;font-family:var(--body);border:1.5px solid var(--line);border-radius:var(--radius);background:var(--ground);color:var(--ink)}
+.steps{display:flex;gap:8px;margin-bottom:22px}
+.steps i{height:4px;flex:1;border-radius:4px;background:var(--line)}
+.steps i.on{background:var(--accent)}
+.err{color:#B3261E;font-size:14px;margin-top:4px}
+.opt-toggle{background:none;border:0;color:var(--accent);font:inherit;font-weight:600;padding:0;cursor:pointer;margin-bottom:16px}
+.optional{border-top:1px dashed var(--line);padding-top:14px;margin-bottom:8px}
+.optional .hint{font-size:13px;color:var(--muted);margin-bottom:12px}
+.done{text-align:center;padding:10px 0}
+.done b{display:block;font-family:var(--display);font-size:22px;font-weight:500;margin-top:10px}
+
+.areas{display:flex;gap:10px;flex-wrap:wrap}
+.areas span{padding:10px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-weight:600;font-size:15px}
+.areas span.fav{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.sky{display:block;width:100%;color:var(--muted);fill:currentColor;opacity:.32}
+.sky-head{height:56px;margin-bottom:22px}
+.sky-foot{height:64px;margin-top:28px;opacity:.22}
+
+footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot .brand{font-size:18px}
+.foot small{display:block;margin-top:10px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);z-index:30}
+.bar .btn{flex:1;justify-content:center}
+.btn-wa{background:#1F8F4E;color:#fff;border-color:transparent}
+.btn-wa:hover{background:#176E3C}
+
+@media (min-width:721px){
+  .bar{left:auto;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--line);border-radius:999px;padding:8px;box-shadow:0 8px 24px rgba(10,20,28,.14)}
+  .bar .btn{flex:0 0 auto;border-radius:999px}
+  body{padding-bottom:96px}
+}
+@media (max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}.quotes{grid-template-columns:1fr}.work .partner.third{grid-column:span 6}.work .partner{grid-column:1/-1}}
+@media (max-width:720px){
+  .menu a:not(.tel){display:none}.brand span{display:none}
+  .nav{height:56px}
+  .subnav{display:flex;gap:18px;overflow-x:auto;font-size:14px;padding-block:0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .subnav a{color:var(--ink);white-space:nowrap;font-weight:600}
+  html{scroll-padding-top:100px}
+  section{padding-block:40px}.sec-head{margin-bottom:18px}
+  .hero{padding-block:16px 40px}
+  .hero-art{aspect-ratio:4/3}
+  .hero-art img{object-position:32% 25%}
+  .hero-copy{position:static;width:auto;background:var(--sky2);padding:20px 18px 22px}
+  .hero h1{font-size:28px}
+  .hero p{margin:10px 0 16px;font-size:15px}
+  .hero .actions{flex-direction:column}
+  .hero .actions .btn{width:100%;justify-content:center}
+  .trust{grid-template-columns:1fr 1fr}.trust div:nth-child(3){border-left:0}.trust div:nth-child(n+3){border-top:1px solid var(--line)}
+  .trust b{font-size:20px}.trust div{padding:14px 16px}
+  .grid3,.grid2{grid-template-columns:1fr}
+  .work{grid-template-columns:1fr}.work .partner,.work .partner.wide,.work .partner.third{grid-column:auto}.work .wide ul{columns:1}
+  .about{grid-template-columns:1fr}
+  .about .ph{aspect-ratio:1/1;width:150px;border-radius:50%}
+  .about .ph img{object-position:50% 8%}
+  blockquote{padding:18px}
+  .form{padding:18px}
+  .val{padding:22px}.val .btn{width:100%;justify-content:center}
+  .closing .btn{width:100%;justify-content:center}
+}
+@media (max-width:420px){.grid4{gap:10px}.grid4 .card-body{padding:12px}.grid4 .card-body h3{font-size:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ba" viewBox="0 0 1200 220">
+    <rect x="95" y="186" width="50" height="14"/><polygon points="111,186 129,186 127,72 113,72"/><rect x="114" y="62" width="12" height="10"/><circle cx="120" cy="57" r="5"/>
+    <rect x="226" y="40" width="8" height="160"/><path d="M230 40 V12" stroke="currentColor" stroke-width="3" fill="none"/><ellipse cx="230" cy="96" rx="26" ry="8"/><ellipse cx="230" cy="72" rx="14" ry="5"/>
+    <polygon points="296,200 332,152 522,152 562,200"/><rect x="360" y="112" width="130" height="46"/>
+    <rect x="350" y="92" width="18" height="70"/><polygon points="350,92 359,78 368,92"/><rect x="392" y="98" width="12" height="64"/><polygon points="392,98 398,86 404,98"/>
+    <rect x="446" y="98" width="12" height="64"/><polygon points="446,98 452,86 458,98"/><rect x="482" y="92" width="18" height="70"/><polygon points="482,92 491,78 500,92"/>
+    <rect x="600" y="120" width="40" height="80"/><rect x="612" y="60" width="16" height="62"/><polygon points="607,60 620,8 633,60"/><circle cx="620" cy="7" r="4"/>
+    <rect x="680" y="100" width="22" height="100"/><ellipse cx="691" cy="98" rx="13" ry="10"/><polygon points="687,90 691,68 695,90"/><circle cx="691" cy="66" r="3"/>
+    <path d="M740 172 L1060 166" stroke="currentColor" stroke-width="5" fill="none"/><path d="M877 62 L800 170 M877 62 L1000 168" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    <path d="M905 200 L866 64 M935 200 L888 64" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="860" y="58" width="34" height="8"/><ellipse cx="877" cy="50" rx="46" ry="12"/><rect x="865" y="30" width="24" height="18" rx="5"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">VIANEMA<span>Slavomír Kollár</span></a>
+    <nav class="menu" aria-label="Hlavné menu">
+      <a href="#ako-pracujem">Ako pracujem</a>
+      <a href="#ponuky">Ponuky</a>
+      <a href="#referencie">Referencie</a>
+      <a href="#predane">Predané</a>
+      <a href="#lokality">Lokality</a>
+      <a class="tel" href="tel:+421911856756">+421 911 856 756</a>
+    </nav>
+  </div>
+  <nav class="wrap subnav" aria-label="Sekcie">
+    <a href="#ako-pracujem">Ako pracujem</a><a href="#ponuky">Ponuky</a><a href="#referencie">Referencie</a><a href="#predane">Predané</a><a href="#lokality">Lokality</a><a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-media">
+      <div class="hero-art">
+        <img src="hero.jpg" width="2000" height="1333" alt="Slavomír Kollár, realitný maklér, s kľúčmi v ruke">
+      </div>
+      <div class="hero-copy">
+        <h1>Realitné služby na najvyššej úrovni</h1>
+        <p>Som realitný maklér a svojim klientom pomáham predať, kúpiť a prenajať ich nehnuteľnosť. Prevediem Vás celým procesom od úvodného stretnutia až po odovzdanie nehnuteľnosti novému majiteľovi tak, aby ste sa Vy v kľude mohli venovať svojej práci a rodine.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#ponuky">Pozrieť ponuky</a>
+          <a class="btn btn-ghost" href="#ocenenie" data-open-form>Zistiť cenu nehnuteľnosti</a>
+        </div>
+      </div>
+    </div>
+    <div class="trust" aria-label="Skúsenosti">
+      <div><b>10+</b><small>rokov v realitách</small></div>
+      <div><b>200+</b><small>predaných nehnuteľností</small></div>
+      <div><b>Stovky</b><small>spokojných klientov</small></div>
+      <div><b>24 h</b><small>od stretnutia poviem trhovú cenu</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="ponuky">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Aktuálne</div><h2>Ponuky</h2></div>
+      <a href="https://www.vianemareal.eu/makler/68-mgr-slavomir-kollar#properties">Všetky ponuky na vianemareal.eu →</a>
+    </div>
+    <div class="grid2 offers">
+      <a class="card" href="https://www.vianemareal.eu/nehnutelnost/2227-perspektivny-1-izbovy-byt-v-top-lokalite-stareho-ruzinova-na-trencianskej-ulici">
+        <div class="ph"><span class="tag">Predaj</span><img src="ponuka-trencianska.jpg" alt="1-izbový byt, Trenčianska ulica, starý Ružinov" loading="lazy"></div>
+        <div class="card-body"><h3>1-izbový byt, starý Ružinov — Trenčianska</h3><div class="price">189 990 €</div><div class="meta">37 m²</div></div>
+      </a>
+      <a class="card" href="https://www.vianemareal.eu/nehnutelnost/2333-pekny-3i-byt-na-prenajom-na-kuklovskej-ulici-pri-lese">
+        <div class="ph"><span class="tag">Prenájom</span><img src="ponuka-kuklovska.jpg" alt="3-izbový byt na prenájom, Kuklovská ulica, Karlova Ves" loading="lazy"></div>
+        <div class="card-body"><h3>3-izbový byt pri lese, Karlova Ves — Kuklovská</h3><div class="price">960 € / mesiac</div><div class="meta">72 m²</div></div>
+      </a>
+    </div>
+    <div class="note">Aktuálne ponuky z vianemareal.eu, ponukové ceny. Aktuálny stav ponuky nájdete vždy na jej stránke.</div>
+  </div>
+</section>
+
+<section id="ako-pracujem">
+  <div class="wrap">
+    <div class="about">
+      <div class="ph"><img src="portret.jpg" width="900" height="1350" alt="Mgr. Slavomír Kollár" loading="lazy"></div>
+      <div>
+        <div class="eyebrow">O mne · Ako pracujem</div>
+        <h2>Odborne, férovo a svedomite!</h2>
+        <p class="lede role">Mgr. Slavomír Kollár · realitný maklér</p>
+        <p style="margin-top:16px">Vždy pre Vás urobím maximum tak, aby ste na konci dostali za Vašu nehnuteľnosť čo najvyššiu sumu pri splnení ďalších atribútov (napr. časového) a aby ste ma bez akýchkoľvek zábran mohli odporučiť Vašim známym v prípade, že títo potrebujú predať nehnuteľnosť.</p>
+        <p>Poďme ale po poriadku.</p>
+      </div>
+    </div>
+
+    <div class="grid2 work">
+      <div class="partner">
+        <h3>Všetko začína stretnutím</h3>
+        <p>Najskôr príde Váš telefonát, alebo email, kde si dohodneme spoločné stretnutie či už na káve, alebo priamo na nehnuteľnosti, ktorú plánujete predať. Na stretnutí sa Vás budem veľa pýtať, potrebujem vedieť motív predaja a všetky súvislosti okolo neho, aby som mohol pre Vás nastaviť ideálnu predajnú stratégiu.</p>
+        <p>Najneskôr do 24 hod od stretnutia Vám poviem aj trhovú cenu, resp. rozpätie a nastavíme si spoločne ponukovú cenu, s ktorou pôjdeme „von“, to všetko samozrejme v prípade, že sa dohodneme na spolupráci.</p>
+      </div>
+      <div class="partner">
+        <h3>Komplexná služba</h3>
+        <p>Svojim klientom poskytujem komplexnú službu, od úplného začiatku až po samotné odovzdanie nehnuteľnosti novému majiteľovi. Všetko s dôrazom na detail tak, aby ste sa Vy mohli venovať Vašej práci, záľubám a rodine; ja sa postarám o všetko ostatné – od prípravnej fázy (príprava nehnuteľnosti na fotenie a točenie videa, homestaging), cez marketing, obhliadky nehnuteľnosti, až po podpis zmlúv a odovzdanie bytu/domu.</p>
+        <p>Všetko podrobné vysvetlím na úvodnom stretnutí.</p>
+      </div>
+      <div class="partner wide">
+        <h3>Čo robím inak: pridaná hodnota a marketing</h3>
+        <p>Maklér by Vám mal dať pridanú hodnotu, pretože odfotiť byt a zavesiť na bazoš a nehnuteľnosti dokážete aj Vy.</p>
+        <ul>
+          <li>Inzerujeme na všetkých relevantných realitných portáloch, čo by mal byť štandard.</li>
+          <li>Nehnuteľnosť po príprave fotíme a točíme profi technikou, fotky ešte upravujeme, takisto video, ktoré je dnes veľmi dôležitý nástroj, ľudia video milujú!</li>
+          <li>Prvá fotografia predáva! Musí zaujať v rýchlosti, k nej si záujemca priraďuje pri hľadaní cenu a v prípade, že je škaredá, tmavá, nezaujímavá, tak na inzerát neklikne.</li>
+          <li>Pripravím textovú časť inzerátu, pošlem Vám na pripomienky, resp. schválenie.</li>
+          <li>V prípade, že nebudeme robiť 3D obhliadku, nakreslím pôdorys nehnuteľnosti — záujemca vidí priestor, dispozíciu a vie, či sa „zmestí“.</li>
+          <li>Inzerát pravidelne TOPUJEME, aby sa zobrazoval na popredných pozíciách a bol viditeľnejší ako ostatné.</li>
+          <li>Nehnuteľnosť propagujem a inzerujem na sociálnych sieťach Facebook, Instagram a Youtube a vkladám príspevky do skupín zameraných na nehnuteľnosti.</li>
+        </ul>
+      </div>
+      <div class="partner third">
+        <h3>Obhliadky</h3>
+        <p>V prípade, že na nehnuteľnosti stále bývate, dohodneme sa ktorý deň, max. dva v týždni budeme robiť obhliadky tak, aby Vás to na jednej strane zaťažovalo čo najmenej a zároveň aby som mohol kumulovať obhliadky – plánovať ich po sebe, čím zabezpečím, že kupujúci budú o sebe vedieť a psychologicky tak „zvýšim“ predajnú hodnotu v ich podvedomí.</p>
+        <p>Osobne sa zúčastňujem na každej obhliadke.</p>
+      </div>
+      <div class="partner third">
+        <h3>Komunikácia</h3>
+        <p>Klientovi volám na pravidelnej báze a dávam informáciu aká je odozva na ponuku. Pre klientov som k dispozícii aj mimo bežných pracovných hodín.</p>
+        <p>Uvedomujem si, že každý obchod je špecifický, každá nehnuteľnosť jedinečná. Hájim záujmy klienta od úplného začiatku do absolútneho záveru, od úvodného stretnutia až do podpísania odovzdávacieho protokolu!</p>
+      </div>
+      <div class="partner third">
+        <h3>Odmena</h3>
+        <p>Na stretnutí sa zároveň dohodneme aj na výške odmeny, ktorá sa vypláca z kúpnej ceny (zvyčajne kopíruje výšku rezervačného poplatku), z Vašej strany nie je potrebná žiadna platba!</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <b>Tak čo, ideme na to?</b>
+      <a class="btn btn-primary" href="#ocenenie" data-open-form>Zistiť cenu nehnuteľnosti</a>
+    </div>
+  </div>
+</section>
+
+<section id="referencie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Referencie</div><h2>Čo o mne píšu klienti</h2></div>
+    </div>
+    <div class="quotes">
+      <blockquote>
+        <div class="q">
+          <p>Chceli by sme sa podeliť o našu skúsenosť s pánom Kollárom, ktorý nám pomohol predať náš rodinný dom. Naša situácia bola pomerne zložitá, pretože dom mal jednu izbu, ktorá sa nachádzala nad dvomi garážami patriacimi susedovi, a to všetko bolo v minulosti nesprávne zapísané. Tento problém spôsobil, že na dom sa nedala poskytnúť hypotéka, čo ho prakticky robilo nepredajným.</p>
+          <p>Pán Kollár sa však ukázal ako skutočný profesionál. Od prvého stretnutia bol veľmi ústretový a ochotný. Vybavil všetky potrebné dokumenty a komunikoval so všetkými zúčastnenými stranami, aby sme mohli situáciu vyriešiť. Jeho odborné znalosti a skúsenosti nám veľmi pomohli prekonať prekážky, ktoré sa zdali byť neprekonateľné.</p>
+          <p>Jedným z najväčších problémov, s ktorými sme sa stretli, bola plomba na prednom pozemku, ktorá znemožňovala jeho prepísanie. Pán Kollár sa s týmto problémom vysporiadal s veľkým nasadením a trpezlivosťou. Vďaka jeho úsiliu sa nám podarilo získať potrebné povolenia a odstrániť prekážky, ktoré bránili predaju.</p>
+          <p>Sme veľmi vďační pánovi Kollárovi za jeho pomoc a profesionálny prístup. Jeho ochota a schopnosť riešiť problémy nám umožnili úspešne predať náš dom, aj keď situácia bola na začiatku veľmi zložitá. Odporúčame pána Kollára každému, kto hľadá spoľahlivého a kompetentného makléra. Je to odborník, na ktorého sa môžete spoľahnúť!</p>
+        </div>
+        <button class="more" type="button">Čítať celé</button>
+        <footer><b>Miroslav Gál a Roman Gál</b>Predaj rodinného domu na Púpavovej ulici, Karlova Ves</footer>
+      </blockquote>
+      <blockquote>
+        <div class="q">
+          <p>Vážený pán Mgr. Kollár,</p>
+          <p>sme nesmierne šťastní, že sme dostali ten správny typ od známych, aby sme sa obrátili práve na Vás v prípade potreby riešenia predaja nášho a následnej kúpy ďalšieho bytu – teda využitia Vašich služieb. Nielen že sme sa stretli s ústretovosťou, veľmi milým a úctivým správaním sa, ale aj s veľkou ochotou riešiť všetky maličkosti a „drobnosti“ v samotnom konaní. Oslovilo nás nielen to, ale aj maximálna čestnosť a to si nesmierne ceníme. Mať pri práci celé srdce a vidieť vykonávať prácu so zanietením a oddanosťou k svojim nadriadeným a samozrejme klientom sa dnes vidí veľmi zriedkavo. Musíme Vám zo srdca poďakovať touto cestou, lebo si to určite zaslúžite a je to žiadúce pre Váš ďalší rozvoj. Takí čestní ľudia by mali byť vysoko hodnotení. Úprimne Vám želáme veľa síl do ďalšej práce, veľa dobrého zdravia a úspechov v tomto odvetví a radosti z Vašej vysoko kvalitne vykonanej práce!</p>
+        </div>
+        <button class="more" type="button">Čítať celé</button>
+        <footer><b>Verčimákovci</b>Predávajúci 5-izbového bytu na Adámiho ulici</footer>
+      </blockquote>
+      <blockquote>
+        <div class="q">
+          <p>K pánovi Kollárovi nás priviedla šťastná náhoda. Postupne sme sa na neho obrátili pri predaji celkovo troch nehnuteľností – bytu a garáže na Bebravskej ulici v Bratislave, ktoré boli predané samostatne a rekreačnej chaty v Borinke pri Bratislave. Jeho práca bola vo všetkých troch prípadoch vysoko profesionálna s ohľadom na špecifiká predávaných nehnuteľností. Milo nás prekvapila nielen rýchlosť predaja, ale aj celková predajná cena, ktorá vysoko prevýšila naše očakávania a to vďaka jeho skúsenosti, vynikajúcemu prehľadu na realitnom trhu a excelentnej koordinácii celého tímu, ktorý sa na predaji podieľal.</p>
+          <p>Zvlášť vysoko si ceníme ľudský prístup, spôsob odkomunikovania všetkých fáz predaja, ochotu časovo sa prispôsobiť a schopnosť skĺbiť požiadavky a očakávania klientov – predávajúcich, ale aj kupujúcich k všeobecnej spokojnosti. Ešte raz ďakujeme pán Kollár</p>
+        </div>
+        <button class="more" type="button">Čítať celé</button>
+        <footer><b>Rodina Goznerová a Reptíková</b>Predaj bytu, garáže a rekreačnej chaty</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="predane">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Výsledky</div><h2>Vybrané predané nehnuteľnosti</h2></div></div>
+    <div class="grid4">
+      <div class="card">
+        <div class="ph"><span class="sold-tag">Predané</span><img src="predane-hamuliakovo.jpg" alt="5-izbový rodinný dom, Hamuliakovo" loading="lazy"></div>
+        <div class="card-body"><h3>5-izbový rodinný dom</h3><div class="meta">Hamuliakovo</div></div>
+      </div>
+      <div class="card">
+        <div class="ph"><span class="sold-tag">Predané</span><img src="predane-borinka.jpg" alt="Rekreačná chata, Borinka" loading="lazy"></div>
+        <div class="card-body"><h3>Rekreačná chata</h3><div class="meta">Borinka</div></div>
+      </div>
+      <div class="card">
+        <div class="ph"><span class="sold-tag">Predané</span><img src="predane-dubravka.jpg" alt="1,5-izbový byt, Dúbravka" loading="lazy"></div>
+        <div class="card-body"><h3>1,5-izbový byt</h3><div class="meta">Bratislava · Dúbravka</div></div>
+      </div>
+      <div class="card">
+        <div class="ph"><span class="sold-tag">Predané</span><img src="predane-nove-mesto.jpg" alt="3-izbový byt v novostavbe, Nové Mesto" loading="lazy"></div>
+        <div class="card-body"><h3>3-izbový byt</h3><div class="meta">Bratislava · Nové Mesto</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ocenenie">
+  <div class="wrap">
+    <div class="val">
+      <div>
+        <div class="eyebrow">Predávate?</div>
+        <h2>Koľko stojí Vaša nehnuteľnosť</h2>
+        <p>Trhovú cenu alebo rozpätie Vám poviem najneskôr do 24 hodín od stretnutia. Vyplnenie zaberie 2 minúty, nič nepodpisujete.</p>
+      </div>
+      <button class="btn btn-primary" id="openForm" type="button">Zistiť cenu</button>
+    </div>
+    <div class="form" id="form" hidden>
+      <div class="steps"><i id="s1" class="on"></i><i id="s2"></i></div>
+      <div id="step1">
+        <div class="f"><label for="typ">Typ nehnuteľnosti</label><select id="typ"><option value="">Vyberte</option><option>Byt</option><option>Dom</option><option>Pozemok</option></select><div class="err" id="e-typ" hidden>Vyberte typ nehnuteľnosti.</div></div>
+        <div class="f"><label for="adresa">Adresa alebo lokalita</label><input id="adresa" type="text" placeholder="napr. Karlova Ves, Kuklovská"><div class="err" id="e-adresa" hidden>Zadajte aspoň lokalitu.</div></div>
+        <div class="f"><label for="m2">Výmera (m²)</label><input id="m2" type="number" placeholder="napr. 65" min="1"><div class="err" id="e-m2" hidden>Zadajte výmeru v m².</div></div>
+        <button class="opt-toggle" id="toggleOpt" type="button">+ pridať detaily (voliteľné)</button>
+        <div class="optional" id="optional" hidden>
+          <div class="hint">Nepovinné — pomôže presnejšiemu rozboru. Zvyšok doladíme v telefonáte.</div>
+          <div class="f"><label for="stav">Stav nehnuteľnosti</label><select id="stav"><option value="">Nevyplnené</option><option>Pôvodný stav</option><option>Čiastočná rekonštrukcia</option><option>Po kompletnej rekonštrukcii</option><option>Novostavba</option></select></div>
+          <div class="f"><label for="izby">Počet izieb</label><select id="izby"><option value="">Nevyplnené</option><option>1</option><option>2</option><option>3</option><option>4 a viac</option></select></div>
+        </div>
+        <button class="btn btn-primary" id="next" type="button" style="width:100%;justify-content:center">Pokračovať</button>
+      </div>
+      <div id="step2" hidden>
+        <div class="f"><label for="meno">Meno</label><input id="meno" type="text" placeholder="Meno a priezvisko"><div class="err" id="e-meno" hidden>Zadajte meno.</div></div>
+        <div class="f"><label for="tel">Telefón</label><input id="tel" type="tel" placeholder="+421 9xx xxx xxx"><div class="err" id="e-tel" hidden>Zadajte telefónne číslo.</div></div>
+        <div class="f"><label for="kedy">Kedy plánujete predávať? (voliteľné)</label><select id="kedy"><option value="">Neviem ešte</option><option>Do 3 mesiacov</option><option>Neskôr</option><option>Len zisťujem cenu</option></select></div>
+        <div class="meta" style="margin-bottom:14px">Po kliknutí sa otvorí e-mail s vyplneným dopytom, ktorý odošlete Vy sami. Údaje sa nikam inam neukladajú.</div>
+        <div class="actions">
+          <button class="btn btn-ghost" id="back" type="button">Späť</button>
+          <button class="btn btn-primary" id="send" type="button" style="flex:1;justify-content:center">Pripraviť e-mail</button>
+        </div>
+      </div>
+      <div class="done" id="done" hidden>
+        <span style="font-size:26px;color:var(--ok)">✓</span>
+        <b>E-mail s dopytom je pripravený.</b>
+        <div class="meta" style="margin-top:6px">Ak sa Vám neotvoril, napíšte mi na <a href="mailto:kollar@vianema.eu">kollar@vianema.eu</a> alebo cez <a id="waSend" href="https://wa.me/421911856756">WhatsApp</a>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lokality">
+  <div class="wrap">
+    <svg class="sky sky-head" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ba"/></svg>
+    <div class="sec-head"><div><div class="eyebrow">Kde pôsobím</div><h2>Lokality</h2></div></div>
+    <p class="lede" style="margin-bottom:18px">Pôsobím v celej Bratislave a okolí, mojou srdcovkou je Karlovka a Dúbravka.</p>
+    <div class="areas">
+      <span class="fav">Karlova Ves</span><span class="fav">Dúbravka</span><span>Celá Bratislava</span><span>Okolie Bratislavy</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site" id="kontakt">
+  <div class="wrap foot">
+    <div>
+      <div class="brand">Mgr. Slavomír Kollár</div>
+      Realitný maklér<br>
+      Vianema s.r.o. · Pobočka Bratislava · Jašíkova 2, BC Kerametal<br>
+      <a href="https://www.vianemareal.eu/makler/68-mgr-slavomir-kollar">Môj profil na vianemareal.eu</a> · pobočku vedie <a href="../ales/">Aleš Machovič</a>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" href="tel:+421911856756">Zavolať</a>
+      <a class="btn btn-ghost" href="https://wa.me/421911856756">WhatsApp</a>
+      <a class="btn btn-ghost" href="mailto:kollar@vianema.eu">E‑mail</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/slavo.kollar_realitny.makler/" rel="noopener">Instagram</a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=100095465624526" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="wrap"><svg class="sky sky-foot" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ba"/></svg></div>
+</footer>
+
+<div class="bar" aria-label="Rýchly kontakt">
+  <a class="btn btn-wa" href="https://wa.me/421911856756">WhatsApp</a>
+  <a class="btn btn-primary" href="#ocenenie" data-open-form>Zistiť cenu</a>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var form=$('form'),s1=$('step1'),s2=$('step2'),done=$('done'),opt=$('optional');
+  function openForm(e){if(e)e.preventDefault();form.hidden=false;form.scrollIntoView({behavior:'smooth',block:'start'})}
+  $('openForm').addEventListener('click',function(){form.hidden=!form.hidden;if(!form.hidden){form.scrollIntoView({behavior:'smooth',block:'start'})}});
+  document.querySelectorAll('[data-open-form]').forEach(function(a){a.addEventListener('click',openForm)});
+  $('toggleOpt').addEventListener('click',function(){opt.hidden=!opt.hidden;this.textContent=opt.hidden?'+ pridať detaily (voliteľné)':'− skryť detaily'});
+  function show(id,bad){$(id).hidden=!bad;return bad}
+  $('next').addEventListener('click',function(){var bad=false;bad=show('e-typ',!$('typ').value)||bad;bad=show('e-adresa',!$('adresa').value.trim())||bad;bad=show('e-m2',!$('m2').value)||bad;if(bad)return;s1.hidden=true;s2.hidden=false;$('s2').classList.add('on')});
+  $('back').addEventListener('click',function(){s2.hidden=true;s1.hidden=false;$('s2').classList.remove('on')});
+  $('send').addEventListener('click',function(){
+    var bad=false;bad=show('e-meno',!$('meno').value.trim())||bad;bad=show('e-tel',!$('tel').value.trim())||bad;if(bad)return;
+    var l=['Dobrý deň, mám záujem o rozbor ceny nehnuteľnosti.','',
+      'Typ: '+$('typ').value,'Adresa / lokalita: '+$('adresa').value.trim(),'Výmera: '+$('m2').value+' m²'];
+    if($('stav').value)l.push('Stav: '+$('stav').value);
+    if($('izby').value)l.push('Počet izieb: '+$('izby').value);
+    if($('kedy').value)l.push('Predaj plánujem: '+$('kedy').value);
+    l.push('','Meno: '+$('meno').value.trim(),'Telefón: '+$('tel').value.trim());
+    var txt=l.join('\n');
+    $('waSend').href='https://wa.me/421911856756?text='+encodeURIComponent(txt);
+    s2.hidden=true;done.hidden=false;
+    window.location.href='mailto:kollar@vianema.eu?subject='+encodeURIComponent('Rozbor ceny nehnuteľnosti')+'&body='+encodeURIComponent(txt);
+  });
+  ['typ','adresa','m2','meno','tel'].forEach(function(id){$(id).addEventListener('input',function(){$('e-'+id).hidden=true})});
+  document.querySelectorAll('blockquote .more').forEach(function(b){
+    var q=b.parentNode;
+    b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){var o=q.classList.toggle('open');b.textContent=o?'Zbaliť':'Čítať celé';b.setAttribute('aria-expanded',o)});
+  });
+  // tlačidlo „Čítať celé“ len tam, kde sa text naozaj orezal
+  window.addEventListener('load',function(){document.querySelectorAll('blockquote').forEach(function(q){var t=q.querySelector('.q'),b=q.querySelector('.more');if(t.scrollHeight<=t.clientHeight+2&&!q.classList.contains('open'))b.style.display='none'})});
+})();
+</script>
+</body></html>

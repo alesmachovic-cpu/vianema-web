@@ -134,6 +134,13 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 .teamline{margin-top:18px;padding:12px 16px;border-radius:12px;background:var(--accent-soft);font-size:15px}
 .teamline a{font-weight:600}
 
+.phases{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.phases li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.ph-n{font-family:var(--display);font-size:30px;font-weight:500;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.ph-days{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.phases h3{font-size:19px;margin-bottom:6px}
+.phases p{margin:0;font-size:15px;color:var(--muted);max-width:62ch}
+@media (max-width:720px){.phases li{grid-template-columns:36px 1fr;gap:12px;padding:16px 0}.ph-n{font-size:24px}}
 .partner{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 .partner h3{font-size:18px;margin-bottom:6px}
 .partner p{margin:0;font-size:15px;color:var(--muted)}
@@ -248,6 +255,7 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
   <div class="wrap nav">
     <a class="brand" href="#top">VIANEMA<span data-f="name"></span></a>
     <nav class="menu" aria-label="Hlavné menu">
+      <a href="#postup">Postup predaja</a>
       <a href="#ponuky">Ponuky</a>
       <a href="#o-mne">O mne</a>
       <a href="#tim" id="navTim">Tím</a>
@@ -256,7 +264,7 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
     </nav>
   </div>
   <nav class="wrap subnav" aria-label="Sekcie">
-    <a href="#ponuky">Ponuky</a><a href="#o-mne">O mne</a><a href="#partneri">Partneri</a><a href="#tim" id="subTim">Tím</a><a href="#referencie">Referencie</a><a href="#predane">Predané</a><a href="#lokality">Lokality</a>
+    <a href="#ponuky">Ponuky</a><a href="#o-mne">O mne</a><a href="#postup">Postup</a><a href="#partneri">Partneri</a><a href="#tim" id="subTim">Tím</a><a href="#referencie">Referencie</a><a href="#predane">Predané</a><a href="#lokality">Lokality</a>
   </nav>
 </header>
 
@@ -311,6 +319,24 @@ footer.site{border-top:1px solid var(--line);padding-block:40px;color:var(--mute
       <div class="chips" id="chips"></div>
       <div class="teamline" id="teamline">Som súčasťou tímu Vianema Bratislava. Pobočku vedie <a href="../ales/">Aleš Machovič</a> — <a href="#tim">celý tím</a>.</div>
     </div>
+  </div>
+</section>
+
+<section id="postup">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Postup pri predaji</div><h2>Od podpisu po kľúče v siedmich krokoch</h2></div>
+      <div class="meta" style="max-width:42ch">Termíny sú orientačné pre bežný predaj bytu. Podstatné je, že každý krok má termín a niekoho, kto zaň zodpovedá.</div>
+    </div>
+    <ol class="phases">
+      <li><span class="ph-n">1</span><div><div class="ph-days">Deň 0–5 · príprava</div><h3>Papiere, cena, byt pripravený</h3><p>List vlastníctva a kataster, doklady od vás, ťarchy a hypotéka na byte. Cena z reálne predaných bytov vo vašom okolí, nie z inzerátov. Príprava bytu, profesionálne fotky a video.</p></div></li>
+      <li><span class="ph-n">2</span><div><div class="ph-days">Deň 5–7 · spustenie</div><h3>Najprv ľudia, ktorých poznáme</h3><p>Byt ide prvý deň našim overeným kupujúcim a kolegom, až potom na portály a sociálne siete. Zverejňuje sa raz a poriadne.</p></div></li>
+      <li><span class="ph-n">3</span><div><div class="ph-days">Deň 7–40 · obhliadky</div><h3>Do bytu pustím len preverených</h3><p>Každý záujemca je pred obhliadkou preverený: hotovosť, hypotéka, alebo čaká na predaj svojho. Každý týždeň dostanete správu, aj keď sa nič nedeje. Po dvoch týždňoch bez obhliadky si sadneme k cene.</p></div></li>
+      <li><span class="ph-n">4</span><div><div class="ph-days">Deň 30–45 · ponuka a rezervácia</div><h3>Písomná ponuka, overené peniaze</h3><p>Ponuka od kupujúceho písomne, s cenou, spôsobom platby a termínom. Bez potvrdeného financovania sa nerezervuje. Rezervačná zmluva so zálohou na účet, nikdy do ruky.</p></div></li>
+      <li><span class="ph-n">5</span><div><div class="ph-days">Deň 45–75 · zmluva a peniaze</div><h3>Advokát a úschova</h3><p>Kúpnu zmluvu pripraví advokátska kancelária. Peniaze idú cez úschovu, nikdy priamo. Vaša hypotéka a výmaz ťarchy sa vyriešia v zmluve. Podpisy úradne overené.</p></div></li>
+      <li><span class="ph-n">6</span><div><div class="ph-days">Deň 75–105 · kataster</div><h3>Vklad a uvoľnenie peňazí</h3><p>Návrh na vklad podám elektronicky, sledujem plombu a rozhodnutie. Po vklade sa uvoľnia peniaze z úschovy — vy nič nevybavujete.</p></div></li>
+      <li><span class="ph-n">7</span><div><div class="ph-days">Do 10 dní od vkladu · odovzdanie</div><h3>Kľúče a prepisy</h3><p>Preberací protokol so stavmi meračov, prepis energií a správcu. Poradím aj s daňou z príjmu z predaja.</p></div></li>
+    </ol>
   </div>
 </section>
 
